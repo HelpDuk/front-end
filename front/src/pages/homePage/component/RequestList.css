@@ -1,0 +1,6 @@
+.requestList .list_wrapper{
+    display: flex;
+    flex-direction: colum;
+    gap: 20px;
+    flex-direction: column;
+}
