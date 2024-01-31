@@ -1,0 +1,17 @@
+.detailpage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 뷰포트의 100% 높이를 차지하도록 설정 */
+    width: 100vw; /* 뷰포트의 100% 너비를 차지하도록 설정 */
+  }
+  
+.leftSide {
+    display: flex;
+    flex-direction: column;
+}
+  
+.rightSide {
+    flex: 0 0 auto; /* 크기를 자동으로 지정하고 남은 공간을 차지하지 않도록 설정 */
+  }
+  
