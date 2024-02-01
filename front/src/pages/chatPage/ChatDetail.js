@@ -1,12 +1,26 @@
 import "./ChatDetail.css";
-import ChatIcon from '../../assets/chatPage/chatIcon.png';
+import ChatDetailDefault from "./ChatDetailDefault";
+import ProfileImg from "../../assets/chatPage/profileImg.png";
 
 function ChatDetail() { 
     return(
         <div className="chatdetail">
-            <div className="defaultScreen">
-                <img src={ChatIcon} />
-                <h5>다른 유저에게 메시지를 보내보세요!</h5>
+            <div className="header">
+                <div className="profile">
+                    <img src={ProfileImg} />
+                    <h5>닉네임</h5>
+                </div>
+                <button className="DoneButton">거래 완료</button>
+            </div>
+
+            <div className="contents">
+                <div className="conversation">
+
+                </div>
+                <div className="sendBar">
+                    <input className="writeMessage" />
+                    <button className="sendButton">전송</button>
+                </div>
             </div>
         </div>
     );
