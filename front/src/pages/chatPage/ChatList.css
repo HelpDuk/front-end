@@ -2,7 +2,7 @@
     flex-basis: 50%;
     background-color: #D5F0C1;
     overflow-y: scroll; /* 내용이 넘칠 때 수직 스크롤 표시 */
-  height: 100%; /* .chatlist의 높이를 100%로 설정하여 부모 요소에 맞게 만듭니다. */
+    height: 100%; /* .chatlist의 높이를 100%로 설정하여 부모 요소에 맞게 만듭니다. */
 }
 
 .chatListNav h3{
