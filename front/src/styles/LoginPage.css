@@ -1,0 +1,88 @@
+.login {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    margin-top: 20px;
+  }
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.form {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    width: 300px; 
+}
+
+input[type="email"], input[type="password"] {
+    width: 280px;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #D9D9D9;
+    background: #FFF;
+    padding-left: 16px;
+    color: #787878;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.32px;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    outline-color: #80BCBD; 
+}
+
+.login-button {
+    width: 300px; 
+    height: 55px;
+    padding: 10px; 
+    font-size: 16px; 
+    border-radius: 5px; 
+    border-width: thin;
+    margin-top: 20px; 
+    margin-bottom: 10px; 
+    background-color: #80BCBD;
+    color: #FFFFFF;
+    border-color: #80BCBD;
+    font-weight: bold;
+    
+}
+
+.login-button:hover {
+    background-color: #6CA9AA; 
+}
+
+.signup-button {
+    width: 300px; 
+    height: 55px;
+    padding: 10px; 
+    font-size: 16px; 
+    border-radius: 5px; 
+    border-width: 1px;
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+    background-color: #FFFFFF;
+    color: #80BCBD;
+    border-color: #80BCBD;
+    font-weight: bold;
+}
+
+.signup-button:hover {
+    outline: 2px solid #6CA9AA;
+ 
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px; /* 이미지 아래에 간격 추가 */
+  }
+  
+.cloud-logo {
+    width: 200px; /* 이미지 너비 조정 */
+    height: 200px; /* 이미지 높이 조정 */
+}
