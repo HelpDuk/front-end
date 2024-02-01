@@ -1,0 +1,12 @@
+.request-form-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.page-container {
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column; /* 세로로 요소를 나열합니다. */
+    align-items: center; /* 요소들을 가운데 정렬합니다. */
+  }
