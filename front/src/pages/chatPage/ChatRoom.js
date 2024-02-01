@@ -1,22 +1,25 @@
 import "./ChatRoom.css";
 import ProfileImg from "../../assets/chatPage/profileImg.png";
+import {Link} from "react-router-dom";
 
 function ChatRoom() { 
     return(
         <div className="chatroom">
-            <button className="chatroomButton">
-            <div className="profile">
-                <img src={ProfileImg} />
-            </div>
-            <div className="chatroomInfo">
-                <div className="userName">
-                    <h5>닉네임</h5>
+            <Link to={"/writeReview"}>
+                <button className="chatroomButton">
+                <div className="chatprofile">
+                    <img src={ProfileImg} />
                 </div>
-                <div className="recentChat">
-                    <p>최근 대화 내용 최근 대화 내용 최근 대화 내용</p>
+                <div className="chatroomInfo">
+                    <div className="userName">
+                        <h5>닉네임</h5>
+                    </div>
+                    <div className="recentChat">
+                        <p>최근 대화 내용 최근 대화 내용 최근 대화 내용</p>
+                    </div>
                 </div>
-            </div>
-            </button>   
+                </button>
+            </Link>   
         </div>
     );
 }

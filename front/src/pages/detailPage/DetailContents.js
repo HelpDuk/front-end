@@ -1,5 +1,4 @@
 import "./DetailContents.css";
-// import StateDropDown from "./StateDropDown";
 
 function DetailContents() { 
     return(

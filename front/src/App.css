@@ -3,8 +3,8 @@
 }
 
 .main {
-  padding: 86px 90px 0px 90px;
-  min-height: calc(100vh - 30px);
+  padding: 86px 80px 0px 80px;
+  min-height: calc(100vh - 172px - 63px);
 }
 
 a {

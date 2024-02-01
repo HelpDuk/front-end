@@ -1,16 +1,20 @@
 import "./ChatDetail.css";
-import ChatDetailDefault from "./ChatDetailDefault";
+import {Link} from "react-router-dom";
 import ProfileImg from "../../assets/chatPage/profileImg.png";
 
 function ChatDetail() { 
     return(
         <div className="chatdetail">
             <div className="header">
-                <div className="profile">
+                <div className="chatDetailProfile">
                     <img src={ProfileImg} />
                     <h5>닉네임</h5>
                 </div>
-                <button className="DoneButton">거래 완료</button>
+                <div className="requestFormButton">
+                    <Link to={"/writeReview"}>
+                        <h4>거래완료</h4>
+                    </Link>
+                </div>
             </div>
 
             <div className="contents">
