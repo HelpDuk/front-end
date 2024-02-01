@@ -1,0 +1,12 @@
+.temperature .temperatureBarContainer {
+    width: 100%;
+    background-color: #F1F1F1;
+    border-radius: 10px;
+    height: 22px;
+}
+
+.temperature .temperatureBar {
+    height: 100%;
+    background-color: #D5F0C1;
+    border-radius: 10px;
+}

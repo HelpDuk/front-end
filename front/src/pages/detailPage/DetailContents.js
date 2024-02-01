@@ -1,5 +1,5 @@
 import "./DetailContents.css";
-import StateDropDown from "./StateDropDown";
+// import StateDropDown from "./StateDropDown";
 
 function DetailContents() { 
     return(
@@ -32,7 +32,11 @@ function DetailContents() {
 
             <div className="others">
                 <h5>거래완료</h5>
-                <StateDropDown />
+                <select>
+                    <option value="option1">거래 전</option>
+                    <option value="option2">예약 중</option>
+                    <option value="option3">거래 완료</option>
+                </select>
                 <button>채팅하기</button>
             </div>
         </div>
