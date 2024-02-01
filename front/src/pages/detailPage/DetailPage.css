@@ -1,0 +1,27 @@
+.detailpage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 뷰포트의 100% 높이를 차지하도록 설정 */
+    width: 100vw; /* 뷰포트의 100% 너비를 차지하도록 설정 */
+  }
+  
+.leftSide {
+    display: flex;
+    flex-direction: column;
+}
+  
+.rightSide {
+    flex: 0 0 auto; /* 크기를 자동으로 지정하고 남은 공간을 차지하지 않도록 설정 */
+  }
+
+  /* 선을 추가하고 싶은 경우 */
+.leftSide::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 350px; /* 선의 길이 설정 */
+  background-color: #ccc; /* 선의 색상 설정 */
+  margin-top: 10px; /* 선 위쪽에 여백 추가 */
+}
+  
