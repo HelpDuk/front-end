@@ -34,7 +34,7 @@ function WriteReview () {
     };
 
     return (
-        <div className="writeReview">
+        <div className="writeReview"  style={{padding: "20px"}}>
             <div className="reviewIntro">
                 <img className="reviewlog" alt="reviewlog"src={reviewLog} />
                 <h2>헬퍼와의 거래는 만족스러우셨나요? 사용자님의 후기를 남겨주세요!</h2>

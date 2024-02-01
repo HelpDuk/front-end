@@ -29,7 +29,7 @@ function Nav () {
                 <Link to={"./chatpage"}>
                     <img className="navchat" alt="chatRome" src={chatImage} />
                 </Link>
-                <Link to={""}>
+                <Link to={"./alert"}>
                     <img className="navalarm" alt="alarm" src={alarmImage} />
                 </Link>
                 <Link to={"./mypage"}>

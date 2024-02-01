@@ -1,13 +1,17 @@
 import "./Profile.css";
 import ProfileImg from '../../assets/detailPage/profileImg.png';
+import { useUser } from '../../components/UserContext';
+import Temperature from "../../components/Temperature";
 
 function Profile() {
+    const { userImage, userTemperature } = useUser();
+
     return(
         <div className="profile">
             <div className="profile-contents">
-                <img src={ProfileImg} />
+                <img src={userImage} />
                 <h4>닉네임</h4>
-                <h5>(온도바 컴포넌트)</h5>
+                <Temperature userTemperature={userTemperature} />
             </div>
         </div>
     );

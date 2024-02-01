@@ -1,5 +1,5 @@
 import "./Mypage.css"
-import heart from '../../assets/image/하트.png';
+import fullheart from '../../assets/image/하트.png';
 import emptyHeart from "../../assets/image/빈하트.png"
 import { Link } from "react-router-dom";
 import ReviewDetail from './ReviewDetail';
@@ -8,28 +8,26 @@ import Temperature from "../../components/Temperature";
 import { useState } from "react";
 
 function Mypage () {
-    const { userImage, nickname } = useUser();
-    const [choiceHelper, setChoiceHelper] = useState(false);
+    const { userImage, nickname, userTemperature } = useUser();
+    const [currentLike, setCurrentLike] = useState(emptyHeart);
 
     const ChangeHeart = () => {
-
+        setCurrentLike(currentLike === emptyHeart ? fullheart : emptyHeart)
     }
-
-    const userTemperature = 90; // 사용자 온도
 
     const reviewNum = 2; // 받은 의뢰 후기 
     
     return (
-        <div className="mypage">
-            <div>
+        <div className="mypage" style={{padding: "20px"}}>
+            <div className="myrequestsList" style={{marginBottom: "65px"}}>
                 <div className="userProfile">
                     <div className="userinfo">
                         <img className="userImg" alt="user" src={userImage} />
                         <h1>{nickname}</h1>
-                        <p style={{color: "#A3A3A3"}}>subin2@dukksung.ac.kr</p>
+                        <h5 style={{color: "#A3A3A3", fontSize: "1em"}}>subin2@dukksung.ac.kr</h5>
                     </div>
                     <div className="userSetting">
-                        <Link to={"../"}>
+                        <Link to={"../homePage"}>
                             <h4>로그아웃</h4>
                         </Link>
                         <Link to={"./ProfileEdit"}>
@@ -37,12 +35,12 @@ function Mypage () {
                         </Link>
                     </div>  
                 </div>
-                <div className="temperature" style={{marginTop: "60px"}}>
+                <div style={{marginTop: "60px"}}>
                     <div className="mytemperature">
                         <h2>나의 온도</h2>
                         <div className="temperatureInfo">
-                            <h2 style={{color: "#AAD9BB", fontSize: "1.7em"}}>{userTemperature}°C</h2>
-                            <img alt="heart" src={heart} />
+                            <h2>{userTemperature}°C</h2>
+                            <img alt="heart" src={fullheart} />
                         </div>
                     </div>
                     <Temperature userTemperature={userTemperature} />
@@ -51,22 +49,22 @@ function Mypage () {
                     <h2 style={{marginBottom: "15px"}}>나의 거래</h2>
                     <ul style={{paddingTop: "20px"}}>
                     <li>
-                        <Link to={"./myRequests"}><p style={{fontSize: "1.2em"}}>의뢰 목록</p></Link>
+                        <Link to={"./myRequests"}><p style={{fontSize: "1.2em", paddingBottom: "20px"}}>의뢰 목록</p></Link>
                     </li>
                     <li>
-                        <Link to={"./helpedRequests"}><p style={{fontSize: "1.2em"}}>받은 의뢰 목록</p></Link>
+                        <Link to={"./helpedRequests"}><p style={{fontSize: "1.2em", paddingBottom: "20px"}}>받은 의뢰 목록</p></Link>
                         </li>
                     <li>
-                    <Link to={"./HelperList"}><p  style={{fontSize: "1.2em"}}>관심목록</p></Link>
+                    <Link to={"./HelperList"}><p  style={{fontSize: "1.2em", paddingBottom: "20px"}}>관심목록</p></Link>
                         </li>
                     </ul>
                 </div>
                 <div style={{marginTop: "80px"}}>
                 <Link to={`./reviewList`} state={{ reviewNum: reviewNum }} ><h2 style={{marginBottom: "15px"}}>받은 의뢰 후기 {reviewNum}</h2></Link>
-                    <p style={{paddingTop: "20px", paddingLeft: "25px"}}>받은 의뢰 후기가 {reviewNum}개 있습니다.</p>
+                    <p style={{fontSize: "1.2em", paddingTop: "20px", paddingLeft: "25px"}}>받은 의뢰 후기가 {reviewNum}개 있습니다.</p>
                 </div>
             </div>
-            <div>
+            <div className="myrequestsList">
                 <div className="userProfile">
                     <div className="userinfo">
                         <img className="userImg" alt="user" src={userImage} />
@@ -74,7 +72,7 @@ function Mypage () {
                     </div>
                     <div className="userSetting">
                         <button style={{border: "none", backgroundColor: "transparent"}}>
-                            <img className="loveHelper" alt="emptyHear" src={emptyHeart} />
+                            <img onClick={ChangeHeart} className="loveHelper" alt="emptyHear" src={currentLike} />
                         </button>
                     </div>  
                 </div>
@@ -82,8 +80,8 @@ function Mypage () {
                     <div className="mytemperature">
                         <h2>{nickname} 온도</h2>
                         <div className="temperatureInfo">
-                            <h2 style={{color: "#AAD9BB", fontSize: "1.7em"}}>{userTemperature}°C</h2>
-                            <img alt="heart" src={heart} />
+                            <h2>{userTemperature}°C</h2>
+                            <img alt="heart" src={fullheart} />
                         </div>
                     </div>
                     <Temperature userTemperature={userTemperature} />

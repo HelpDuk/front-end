@@ -6,7 +6,7 @@ function HelperList() {
     const { userImage, nickname } = useUser();
 
     return (
-        <div>
+        <div style={{padding: "20px"}}>
             <h1 className="editTitle" style={{paddingBottom: "30px"}}>관심 목록</h1>
             <div className='helperList'>
                 <img alt="heart" src={heart} />

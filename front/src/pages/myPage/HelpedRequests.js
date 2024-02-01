@@ -5,7 +5,7 @@ function SupportLists() {
 
     
     return (
-        <div className="supportLists">
+        <div className="supportLists"  style={{padding: "20px"}}>
             <h1 className="editTitle">받은 의뢰 목록</h1>
             <div className="myList">
                 <img className="requestsPhoto" alt="requestsPhoto" src={RequestsPhoto} />
