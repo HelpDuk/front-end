@@ -1,5 +1,5 @@
 import "./DetailPage.css";
-import DetailImg from "./DetailImg";
+import SampleImage from '../../assets/detailPage/printer.png';
 import Profile from "./Profile";
 import DetailContents from "./DetailContents";
 
@@ -7,7 +7,7 @@ function DetailPage() {
     return(
         <div className="detailpage">
             <div className="leftSide">
-                <DetailImg />
+                <img src={SampleImage} />
                 <Profile />
             </div>
             <div className="rightSide">
