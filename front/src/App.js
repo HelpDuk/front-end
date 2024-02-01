@@ -17,10 +17,13 @@ import Signup from "./pages/SignupPage"
 import Alert from "./pages/AlertPage"
 import RequestForm from "./pages/RequestFormPage"
 import { UserProvider } from './components/UserContext';
-
+import { MockProvider } from './components/MockContext';
+ 
 function App() {
+
   return (
     <UserProvider>
+      <MockProvider>
       <BrowserRouter>
         <div className="App">
           <Nav />
@@ -32,7 +35,7 @@ function App() {
               <Route path={"/alert"} element={<Alert />} />
               <Route path={"/mypage"} element={<Mypage />} />
               <Route path={"/requestForm"} element={<RequestForm />} />
-              <Route path={"/detailPage"} element={<DetailPage />} />
+              <Route path={"/detailPage/:taskId"} element={<DetailPage />} />
               <Route path={"/mypage/profileEdit"} element={<ProfileEdit />} />
               <Route path={"/mypage/myRequests"} element={<MyRequests />} />
               <Route path={"/mypage/helpedRequests"} element={<HelpedRequests />} />
@@ -45,6 +48,7 @@ function App() {
           <Footer />   
         </div>
       </BrowserRouter>
+      </MockProvider>
     </UserProvider>
   );
 }

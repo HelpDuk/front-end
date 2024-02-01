@@ -7,7 +7,6 @@ const RequestList = () => {
         <div className="requestList">
             <div className="list_wrapper">
                 <Request /> 
-                <Request />
             </div>
             
         </div>

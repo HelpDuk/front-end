@@ -5,7 +5,7 @@ function ReviewDetail() {
     const { userImage, nickname } = useUser();
 
     return (
-        <div className="reviewDetail">
+        <div className="reviewDetail"  style={{padding: "20px"}}>
             <div className='detailList'>
                 <div className="reviewUser">
                     <img className="userImg" alt="user" src={userImage} />
