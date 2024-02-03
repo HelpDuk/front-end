@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./DetailContents.css";
+import {Link} from "react-router-dom";
 import { useMock } from '../../components/MockContext';
 import { useParams } from 'react-router-dom';
-// import StateDropDown from "./StateDropDown";
 
 function DetailContents() { 
     const { mockDate, setMockDate } = useMock();
@@ -42,34 +42,41 @@ function DetailContents() {
                 </div>
                 <div className="secondLine">
                     <h5>{request.category}</h5>
-                    <small>날짜</small>
+                    <small>{request.uploadDate}</small>
                 </div>
                 <div className="thirdLine">
-                    <h4>가격</h4>
-                    <h6>계좌 이체</h6>
+                    <h4>{request.requestFee}원</h4>
+                    <h6>{request.requestFeeMethod}</h6>
                     <h5>심부름비: </h5>
-                    <h4>{request.price || request.requestFee}원</h4>
-                    <h6>심부름 전 계좌이체</h6>
+                    <h4>{request.taskFee}원</h4>
+                    <h6>{request.taskFeeMethod}</h6>
                 </div>
                 <div className="deadLine">
-                    <h6>{request.uploadDate}까지</h6>
+                    <h6>{request.taskTime}까지</h6>
                 </div>
                 <div className="explanation">
                     <p>{request.detail}</p>
                 </div>
                 <div className="chatCount">
-                    <small>채팅 개수</small>
+                    <small>채팅수 {request.chattingCount}</small>
                 </div>
             </div>
 
             <div className="others">
-                <h5>거래완료</h5>
-                <select value={taskStatus} onChange={handleStatusChange}>
-                    <option value="거래 전">거래 전</option>
-                    <option value="예약 중">예약 중</option>
-                    <option value="거래 완료">거래 완료</option>
-                </select>
-                <button>채팅하기</button>
+                <h5>{request.taskStatus}</h5>
+                {request.isItMine && ( //isItMine일 때만 변경 가능
+                    <select value={taskStatus} onChange={handleStatusChange}>
+                        <option value="거래 전">거래 전</option>
+                        <option value="예약 중">예약 중</option>
+                        <option value="거래 완료">거래 완료</option>
+                    </select>
+                )}
+                
+                <div className="moveToChat">
+                    <Link to={"/chatpage"}>
+                        <h4>채팅하기</h4>
+                    </Link>
+                </div>
             </div>
             </div>
         
