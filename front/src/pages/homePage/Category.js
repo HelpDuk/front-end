@@ -5,17 +5,17 @@ const Category = (props) => {
   const [visibilityAnimation, setVisibilityAnimation] = useState(false);
   const [repeat, setRepeat] = useState(null);
 
-  const [checkedItems, setCheckedItems] = useState({
-    possibleRequests: false,
-    myRequests: false,
+  const [categoryDtoList, setCategoryDtoList] = useState({
+    onlyYet: false,
+    onlyMine: false,
     school: false,
-    dorm: false,
+    dormitory: false,
     etc: false,
     print: false,
     food: false,
-    partTimeJob: false,
-    cleaning: false,
-    evnetAssist: false,
+    coverFor: false,
+    clean: false,
+    eventAssistant: false,
     bug: false,
   });
 
@@ -32,10 +32,13 @@ const Category = (props) => {
   }, [props.visibility]);
 
   const handleCheckboxChange = (itemName) => {
-    setCheckedItems({
-      ...checkedItems,
-      [itemName]: !checkedItems[itemName],
+    setCategoryDtoList({
+      ...categoryDtoList,
+      [itemName]: !categoryDtoList[itemName],
     });
+
+    // 부모 컴포넌트로 선택된 카테고리 정보 전달
+    props.onCategoryChange(categoryDtoList);
   };
 
   return (
@@ -50,16 +53,16 @@ const Category = (props) => {
           <li>
             <input
               type="checkbox"
-              checked={checkedItems.possibleRequests}
-              onChange={() => handleCheckboxChange('possibleRequests')}
+              checked={categoryDtoList.onlyYet}
+              onChange={() => handleCheckboxChange('onlyYet')}
             />
             <label>거래가능글만</label>
           </li>  
           <li>
             <input
               type="checkbox"
-              checked={checkedItems.myRequests}
-              onChange={() => handleCheckboxChange('myRequests')}
+              checked={categoryDtoList.onlyMine}
+              onChange={() => handleCheckboxChange('onlyMine')}
             />
             <label>내 의뢰글만</label>
           </li>
@@ -71,7 +74,7 @@ const Category = (props) => {
           <li>
             <input
               type="checkbox"
-              checked={checkedItems.school}
+              checked={categoryDtoList.school}
               onChange={() => handleCheckboxChange('school')}
             />
             <label>학교 안</label>
@@ -79,15 +82,15 @@ const Category = (props) => {
           <li>
             <input
               type="checkbox"
-              checked={checkedItems.dorm}
-              onChange={() => handleCheckboxChange('dorm')}
+              checked={categoryDtoList.dormitory}
+              onChange={() => handleCheckboxChange('dormitory')}
             />
             <label>기숙사</label>
           </li>
           <li>
             <input
               type="checkbox"
-              checked={checkedItems.etc}
+              checked={categoryDtoList.etc}
               onChange={() => handleCheckboxChange('etc')}
             />
             <label>기타</label>
@@ -100,7 +103,7 @@ const Category = (props) => {
           <li>
             <input
               type="checkbox"
-              checked={checkedItems.print}
+              checked={categoryDtoList.print}
               onChange={() => handleCheckboxChange('print')}
             />
             <label>프린트</label>
@@ -108,7 +111,7 @@ const Category = (props) => {
           <li>
             <input
               type="checkbox"
-              checked={checkedItems.food}
+              checked={categoryDtoList.food}
               onChange={() => handleCheckboxChange('food')}
             />
             <label>음식</label>
@@ -116,31 +119,31 @@ const Category = (props) => {
           <li>
             <input
               type="checkbox"
-              checked={checkedItems.partTimeJob}
-              onChange={() => handleCheckboxChange('partTimeJob')}
+              checked={categoryDtoList.coverFor}
+              onChange={() => handleCheckboxChange('coverFor')}
             />
             <label>알바 대타</label>
           </li>
           <li>
             <input
               type="checkbox"
-              checked={checkedItems.cleaning}
-              onChange={() => handleCheckboxChange('cleaning')}
+              checked={categoryDtoList.clean}
+              onChange={() => handleCheckboxChange('clean')}
             />
             <label>청소</label>
           </li>
           <li>
             <input
               type="checkbox"
-              checked={checkedItems.eventAssist}
-              onChange={() => handleCheckboxChange('eventAssist')}
+              checked={categoryDtoList.eventAssistant}
+              onChange={() => handleCheckboxChange('eventAssistant')}
             />
             <label>행사 보조</label>
           </li>
           <li>
             <input
               type="checkbox"
-              checked={checkedItems.bug}
+              checked={categoryDtoList.bug}
               onChange={() => handleCheckboxChange('bug')}
             />
             <label>벌레</label>

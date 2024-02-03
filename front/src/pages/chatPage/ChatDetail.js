@@ -1,21 +1,32 @@
 import "./ChatDetail.css";
-import ChatDetailDefault from "./ChatDetailDefault";
+import Conversation from "./Conversation";
+import {Link} from "react-router-dom";
 import ProfileImg from "../../assets/chatPage/profileImg.png";
+import { useChatMock } from '../../components/MockChat';
+import { useParams } from 'react-router-dom';
 
-function ChatDetail() { 
+function ChatDetail({chat}) { 
+    const { mockChat} = useChatMock();
+    const { roomId } = useParams();
+
+    const chatRoomIndex = mockChat.findIndex(chatroom => chatroom.roomId === roomId);
+    const chatRoom = mockChat[chatRoomIndex];
+
     return(
         <div className="chatdetail">
             <div className="header">
-                <div className="profile">
+                <div className="chatDetailProfile">
                     <img src={ProfileImg} />
-                    <h5>닉네임</h5>
+                    <h5>{chatRoom.helper.nickName}</h5>
                 </div>
-                <button className="DoneButton">거래 완료</button>
+                    <Link to={"/writeReview"}>
+                        <button className="requestFormButton">거래완료</button>
+                    </Link>
             </div>
 
             <div className="contents">
                 <div className="conversation">
-
+                    <Conversation />
                 </div>
                 <div className="sendBar">
                     <input className="writeMessage" />

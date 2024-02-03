@@ -18,5 +18,15 @@
 .profile {
     margin-top: 20px;
     margin-left: 20px;
+    width: 100%;
 }
 
+/* 선을 추가하고 싶은 경우 */
+.profile::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 100%; /* 선의 길이 설정 */
+  background-color: #ccc; /* 선의 색상 설정 */
+  margin-top: 10px; /* 선 위쪽에 여백 추가 */
+}

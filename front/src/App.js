@@ -9,21 +9,28 @@ import HelpedRequests from "./pages/myPage/HelpedRequests";
 import HelperList from "./pages/myPage/HelperList";
 import ReviewList from "./pages/myPage/ReviewList";
 import WriteReview from "./pages/myPage/WriteReview";
-import HomePage from "./pages/homePage/component/HomePage";
+import HomePage from "./pages/homePage/HomePage";
 import ChatPage from "./pages/chatPage/ChatPage";
+import ChatPageDetail from "./pages/chatPage/ChatPageDetail";
 import DetailPage from "./pages/detailPage/DetailPage"
 import Login from "./pages/LoginPage";
 import Signup from "./pages/SignupPage"
 import Alert from "./pages/AlertPage"
 import RequestForm from "./pages/RequestFormPage"
 import { UserProvider } from './components/UserContext';
+import SampleImg from "./assets/homePage/sample.png";
+import { useState } from "react"
 import { MockProvider } from './components/MockContext';
- 
+import { ChatMockProvider } from './components/MockChat';
+import { ConversationMockProvider } from './components/MockConversation';
+
 function App() {
 
   return (
     <UserProvider>
       <MockProvider>
+        <ChatMockProvider>
+          <ConversationMockProvider>
       <BrowserRouter>
         <div className="App">
           <Nav />
@@ -42,12 +49,15 @@ function App() {
               <Route path={"/mypage/helperList"} element={<HelperList />} />
               <Route path={"/mypage/reviewList"} element={<ReviewList />} />
               <Route path={"/writeReview"} element={<WriteReview />} />
+              <Route path={"/ChatPage/:roomId"} element={<ChatPageDetail />} />
               <Route path={"/chatpage"} element={<ChatPage />} />
             </Routes>
           </div>
           <Footer />   
         </div>
       </BrowserRouter>
+      </ConversationMockProvider>
+      </ChatMockProvider>
       </MockProvider>
     </UserProvider>
   );

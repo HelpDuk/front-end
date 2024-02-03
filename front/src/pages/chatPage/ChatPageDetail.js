@@ -1,14 +1,14 @@
 import "./ChatPage.css"; 
 import ChatList from "./ChatList";
-import ChatDetailDefault from "./ChatDetailDefault";
+import ChatDetail from "./ChatDetail";
 
-function ChatPage() { 
+function ChatPageDetail() { 
     return(
         <div className="chatpage">
             <ChatList />
-            <ChatDetailDefault />
+            <ChatDetail />
         </div>
     );
 }
 
-export default ChatPage;
+export default ChatPageDetail;
