@@ -8,16 +8,14 @@ function ReviewList() {
     console.log({reviewNum})
 
     return (
-        <div className="reviewList">
+        <div className="reviewList"  style={{padding: "20px"}}>
             <h1 className="editTitle">의뢰 후기 상세</h1>
             <h2 style={{paddingTop: "50px"}}>후기 {reviewNum}개</h2>
             <div style={{marginLeft: "110px"}}>
-                
                     <ReviewDetail />
                     <ReviewDetail />
                     <ReviewDetail />
                     <ReviewDetail />
-                
             </div>
         </div>
     )

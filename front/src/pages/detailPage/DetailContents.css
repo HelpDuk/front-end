@@ -52,14 +52,17 @@
 .others h5 {
     color: #888888;
 }
-.others button {
-    height: 40px;
-    width: 100px;
+.others .moveToChat {
+    height: 30px;
+    width: 80px;
     position: relative;
     background: #AAD9BB;
     border: none;
     border-radius: 10px;
     color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 

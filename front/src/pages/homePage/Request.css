@@ -2,6 +2,7 @@
     flex-direction: row;
     box-sizing: border-box;
     padding: 10px;
+    margin-bottom: 20px; /* 수정된 부분 */
 
     width: 870px;
     height: 146px;
@@ -29,6 +30,11 @@
     display: block;
 }
 
+.request .category {
+    font-weight: bold;
+    color:#848484;
+}
+
 .request .image {
     width: 120px; /* 이미지의 원하는 가로 크기로 설정 */
     height: 100%; /* 부모 요소의 높이에 맞게 설정 */
@@ -45,8 +51,6 @@
 
 .request .price{
     position: relative;
-
-    
 
     font-family: 'Inter';
     font-style: normal;
@@ -67,6 +71,7 @@
 .request .isSolved {
     /* 거래 완료 표시 */
     position: relative;
+    margin-bottom: 30px;;
 
     /* Rectangle 76 */
     position: relative;
@@ -78,10 +83,11 @@
 
     /* 거래 완료 */
     position: relative;
-    padding: 3px;
+    padding: 5px;
 
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
     color: #FFFFFF;
 }
+

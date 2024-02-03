@@ -37,7 +37,7 @@ function ProfileEdit () {
     };
 
     return (
-        <div className="profileEdit">
+        <div className="profileEdit"  style={{padding: "40px"}}>
             <div className="editTitle">
                 <h1>프로필 수정</h1>
                 <button className="submitButton" onClick={handleSubmit}>
@@ -45,16 +45,16 @@ function ProfileEdit () {
                 </button>
             </div>
             <div className="editInfo">
-                <table>
+                <table style={{marginBottom: "40px"}}>
                     <tr>
                         <td style={{fontSize: "1.2em"}}>프로필 사진</td>
                         <td>
                         <div className="editImage">
-                                <img className="profile" alt="profile" src={tempImage} />
-                                <input type="file" onChange={handleImageChange} style={{ display: 'none' }} id="fileInput" />
-                                <h4 className="profileButton" onClick={() => document.getElementById('fileInput').click()}>사진변경</h4>
-                                <h4 className="profileButton" onClick={resetImage}>사진삭제</h4>
-                            </div>
+                            <img className="profile" alt="profile" src={tempImage} />
+                            <input type="file" onChange={handleImageChange} style={{ display: 'none' }} id="fileInput" accept="image/png, image/jpeg, image/gif"/>
+                            <h4 className="profileButton" onClick={() => document.getElementById('fileInput').click()}>사진변경</h4>
+                            <h4 className="profileButton" onClick={resetImage}>사진삭제</h4>
+                        </div>
                         </td>
                     </tr>
                     <tr className="nickName">

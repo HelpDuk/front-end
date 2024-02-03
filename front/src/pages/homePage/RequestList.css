@@ -9,6 +9,15 @@
     gap: 20px;
     margin-right: 50px;
 }
+.requestList .list_wrapper_area {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.requestList .list_wrapper_area hr {
+    border: 1px solid white;
+    width: 920px;
+}
 
 .requestList .filtering {
     display: flex;

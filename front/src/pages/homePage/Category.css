@@ -6,6 +6,7 @@
 
   .category-dropdown li {
     margin-left: 5px;
+    padding: 0px;
   }
   
   .category-dropdown label {

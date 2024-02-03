@@ -9,9 +9,7 @@ function HomePage() {
     return(
         <div className="homepage">
             <HomepageHeader />
-
-            <RequestList />
-            
+            <RequestList /> 
         </div>
     );
 }
