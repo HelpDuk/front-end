@@ -7,9 +7,7 @@ function DetailPage({mockRequest}) {
     return(
         <div className="detailpage">
             <div className="leftSide">
-                <div className="detailImg">
-                    <img src={SampleImage} />
-                </div>
+
                 <Profile />
             </div>
             <div className="rightSide">
