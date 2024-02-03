@@ -5,8 +5,8 @@
 }
 
 .page-container {
-    margin-top: 200px;
+    margin-top: 80px;
     display: flex;
-    flex-direction: column; /* 세로로 요소를 나열합니다. */
-    align-items: center; /* 요소들을 가운데 정렬합니다. */
-  }
+    flex-direction: column;
+    align-items: center; 
+}

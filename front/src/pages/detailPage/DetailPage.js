@@ -7,7 +7,7 @@ function DetailPage() {
     return(
         <div className="detailpage">
             <div className="leftSide">
-                <img src={SampleImage} />
+                <img src={SampleImage} alt="첨부이미지" />
                 <Profile />
             </div>
             <div className="rightSide">

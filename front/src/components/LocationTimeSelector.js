@@ -21,17 +21,15 @@ function LocationTimeSelector() {
       <select value={location} onChange={handleLocationChange}>
         <option value="">위치</option>
         <option value="학교 안">학교 안</option>
-        <option value="학교 밖">학교 밖</option>
+        <option value="학교 밖">기숙사</option>
         <option value="기타">기타</option>
       </select>
-      <select value={time} onChange={handleTimeChange}>
-        <option value="">시간</option>
-        <option value="10분">10분</option>
-        <option value="15분">15분</option>
-        <option value="30분">30분</option>
-        <option value="1시간">1시간</option>
-        <option value="기타">기타</option>
-      </select>
+      <input
+        type="text"
+        placeholder="시간"
+        value={time}
+        onChange={handleTimeChange}
+      />
     </div>
   );
 }

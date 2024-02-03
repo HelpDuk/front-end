@@ -4,9 +4,9 @@ import camera from "../assets/image/camera.png";
 import "./LocationTimeSelector.js";
 import LocationTimeSelector from './LocationTimeSelector.js';
 
-function FileUploader() {
+function FileUploader( { onFileChange }) {
     // 파일 상태
-    const [file, setFile] = useState(null);
+    // const [file, setFile] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
 
     // 파일 선택 핸들러
@@ -14,11 +14,11 @@ function FileUploader() {
         const selectedFile = e.target.files[0];
         // 이미지 파일인지 확인
         if (selectedFile && selectedFile.type.includes('image')) {
-            setFile(selectedFile);
             setErrorMessage('');
+            onFileChange(true); // 이미지가 삽입되었음을 부모 컴포넌트에 전달
         } else {
-            setFile(null);
             setErrorMessage('이미지 파일만 선택해주세요.');
+            onFileChange(false); // 이미지가 삽입되지 않았음을 부모 컴포넌트에 전달
         }
     };
 
