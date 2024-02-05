@@ -7,7 +7,7 @@
 
 /* 의뢰 목록 공통 css */
 .myList {
-    margin: 40px 30px;
+    margin: 40px 10px;
     display: flex;
     width: 455px;
     height: 250px;
@@ -18,8 +18,10 @@
 }
 
 .myList .requestsPhoto {
-    height: 170px;
-    padding: 0 50px;
+    height: 215px;
+    width: 215px; 
+    padding: 0 25px;
+    object-fit: cover;
 }
 
 .myList .ListInfo {

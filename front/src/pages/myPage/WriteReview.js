@@ -1,38 +1,74 @@
-import "./WriteReview.css"
-import React from "react"
+import "./WriteReview.css";
+import React from "react";
+import axios from 'axios';
 import { useState } from "react";
-import { useNavigate  } from 'react-router-dom';
+import { useNavigate, useParams  } from 'react-router-dom';
 import reviewLog from "../../assets/image/부름부릉얼굴.png"
 import Good from "../../assets/image/좋아요.png"
 import Bad from "../../assets/image/별로예요.png"
 import Great from "../../assets/image/최고예요.png"
+import { useUser } from '../../components/UserContext';
 
 
 function WriteReview () {
-
     const [review, setReview] = useState('');
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [reviewScore, setReviewScore] = useState("");
+    const navigate = useNavigate();
+    const { ACCESS_TOKEN } = useUser();
+
+    const { taskId } = useParams();
 
     const reviewChange = (e) => {
         setReview(e.target.value);
     }
 
-    const navigate = useNavigate();
-
-    const [reviewScore, setReviewScore] = useState("");
-    const handleClickScore = (e) => {
-        setReviewScore(e.target.value);
-    }
-
-    const cancelClick = () => {
-    const confirmcancel = window.confirm("후기 작성을 취소하시겠습니까?")
-
-    if (confirmcancel){
-        navigate('/mypage/myRequests');
-    } else {
-    }
-    
+    const handleImageClick = (score) => {
+        console.log(score);
+        setReviewScore(score);
+        setSelectedImage(score);
     };
 
+    const getSelectedClass = (score) => {
+        return selectedImage === score ? "selected" : "";
+    };
+
+
+    const cancelClick = () => {
+        const confirmcancel = window.confirm("후기 작성을 취소하시겠습니까?")
+
+        if (confirmcancel){
+            navigate('/mypage/myRequests');
+        }
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (review && reviewScore) {
+            const postData = {
+                roomId: taskId,
+                score: reviewScore,
+                content: review,
+            };
+
+            axios.post('/api/review', postData, {headers: {
+                'X-AUTH-TOKEN': `${ACCESS_TOKEN}`
+            }})
+            .then((response) => {
+                console.log(response.data); 
+                alert('후기 저장 완료');
+                navigate('../mypage/myRequests');
+            })
+            .catch((error) => {
+                console.log({postData}); 
+                console.error('리뷰 저장에 실패했습니다.', error);
+                alert('리뷰 저장에 실패했습니다.');
+            });
+    } else {
+        alert('리뷰 내용과 점수를 모두 입력해주세요.');
+        }
+    };
+    
     return (
         <div className="writeReview"  style={{padding: "20px"}}>
             <div className="reviewIntro">
@@ -44,11 +80,11 @@ function WriteReview () {
                     <input
                     type="radio"
                     className="radioButton"
-                    value="Bad"
-                    checked={reviewScore==="Bad"}
-                    onChange={handleClickScore}
+                    value={1}
+                    checked={reviewScore===1}
+                    onChange={handleImageClick}
                     />
-                    <div>
+                    <div className={`imgContainer ${getSelectedClass(1)}`} onClick={() => handleImageClick(1)}>
                         <img className="badImg" alt="bad" src={Bad} />
                         <h2>별로예요!</h2>
                     </div>
@@ -57,29 +93,31 @@ function WriteReview () {
                     <input
                     type="radio"
                     className="radioButton"
-                    value="Good"
-                    checked={reviewScore==="Good"}
-                    onChange={handleClickScore}
+                    value={2}
+                    checked={reviewScore===2}
+                    onChange={handleImageClick}
                     />
-                    <div>
-                    <img className="goodImg" alt="good" src={Good} />
-                    <h2>좋아요!</h2></div>
+                    <div className={`imgContainer ${getSelectedClass(2)}`} onClick={() => handleImageClick(2)}>
+                        <img className="goodImg" alt="good" src={Good} />
+                        <h2>좋아요!</h2>
+                    </div>
                 </label>
                 <label>
                     <input
                     type="radio"
                     className="radioButton"
-                    value="Great"
-                    checked={reviewScore==="Great"}
-                    onChange={handleClickScore}
+                    value={3}
+                    checked={reviewScore===3}
+                    onChange={handleImageClick}
                     />
-                    <div>
-                    <img className="greatImg" alt="great" src={Great} />
-                    <h2>최고예요!</h2></div>
+                    <div className={`imgContainer ${getSelectedClass(3)}`} onClick={() => handleImageClick(3)}>
+                        <img className="greatImg" alt="great" src={Great} />
+                        <h2>최고예요!</h2>
+                    </div>
                 </label>
             </div>
             <div className="writePage">
-                <form onSubmit={reviewChange}>
+                <form onSubmit={handleSubmit}>
                     <textarea 
                         value={review}
                         onChange={reviewChange}
@@ -88,7 +126,7 @@ function WriteReview () {
                         placeholder="의뢰 후기를 작성해주세요!"
                     />
                     <div className="buttonStyle">
-                        <button onClick={cancelClick} className="cancelButton" style={{backgroundColor: "white"}}>취소하기</button>
+                        <button type="button" onClick={cancelClick} className="cancelButton" style={{backgroundColor: "white"}}>취소하기</button>
                         <button type="submit" style={{backgroundColor: "#80BCBD"}}>등록하기</button>
                     </div>
                 </form>

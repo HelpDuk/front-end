@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    align-items: center; /* 수직 정렬 */
+}
+
+.header h1 {
+  margin-right: 620px; /* 텍스트와 버튼 사이 간격 조절 */
+}
+
+.header button {
+    /* 글작성버튼 */
+    width: 144px;
+    height: 43px;
+    left: 868px;
+    top: 216px;
+    border: none;
+
+    /* Rectangle 76 */
+    width: 144px;
+    height: 43px;
+    left: 868px;
+    top: 216px;
+
+    background: #AAD9BB;
+    border-radius: 15px;
+
+    /* 의뢰 하기 */
+    width: 98px;
+    height: 29px;
+    left: 891px;
+    top: 223px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 30px;
+
+    color: #FFFFFF;
+}

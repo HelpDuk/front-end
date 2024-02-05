@@ -4,6 +4,7 @@ const mockRequest = [
     {
         nickName: "도담",
         temperature: 37.96,
+        userEmail: "123456@fdf",
 
         taskId: 0,
         title: "프린트 해주실 분",
@@ -18,11 +19,13 @@ const mockRequest = [
         taskFeeMethod: "심부름  계좌 이체",
         taskTime: "20분 후 까지",
         chattingCount: 2,
-        isItMine: true
+        isItMine: true,
+        reviewWritten: false,
     },
     {
         nickName: "미뇽",
-        temperature: 37.96,
+        temperature: 80.96,
+        userEmail: "fdf55@dsfdf",
 
         taskId: 1,
         title: "커피 사다주실 분",
@@ -38,11 +41,13 @@ const mockRequest = [
         taskFeeMethod: "심부름 전 계좌 이체",
         taskTime: "30분 후 까지",
         chattingCount: 3,
-        isItMine: false
+        isItMine: false,
+        reviewWritten: false,
     },
     {
         nickName: "니니",
-        temperature: 90.96,
+        temperature: 56.96,
+        userEmail: "hhtht@fdfs",
 
         taskId: 3,
         title: "같이 밥 먹으실 분",
@@ -58,7 +63,8 @@ const mockRequest = [
         taskFeeMethod: "심부름 전 계좌 이체",
         taskTime: "40분 후 까지",
         chattingCount: 5,
-        isItMine: true
+        isItMine: true,
+        reviewWritten: false,
     }
   ]
 
@@ -68,9 +74,19 @@ export const useMock = () => useContext(MockContext);
 
 export const MockProvider = ({children}) => {
     const [mockDate, setMockDate] = useState(mockRequest);
+    const [currentUserEmail, setCurrentUserEmail] = useState("123456@fdf");
 
+    const [interests, setInterests] = useState([]);
+    const addInterest = (user) => {
+        setInterests((prev) => [...prev, user]);
+    };
+    
+      const removeInterest = (userEmail) => {
+        setInterests((prev) => prev.filter(u => u.userEmail !== userEmail));
+    };
+    
     return (
-        <MockContext.Provider value={{mockDate, setMockDate}}>
+        <MockContext.Provider value={{mockDate, setMockDate, currentUserEmail, setCurrentUserEmail, interests, addInterest, removeInterest}}>
             {children}
         </MockContext.Provider>
     )

@@ -60,3 +60,14 @@
     font-size: 25px;
     margin: 0;
 }
+
+.mypage li p {
+    display: inline-block;  
+    margin: 0 auto; 
+    transition: transform 0.3s ease;  
+}
+
+.mypage li p:hover {
+    color: black;
+    transform: scale(1.3);
+}

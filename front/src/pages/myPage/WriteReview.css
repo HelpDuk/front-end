@@ -24,6 +24,10 @@
     padding-top: 60px;
 }
 
+.writeReview .reviewImg h2 {
+    text-align: center;
+}
+
 .writeReview .radioButton {
     visibility: hidden;
 }
@@ -32,6 +36,16 @@
     border: 3px solid #AAD9BB;
     border-radius: 15px;
 } */
+
+.writeReview .imgContainer {
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+.writeReview .imgContainer.selected {
+    transform: scale(1.2);
+}
 
 .writePage {
     display: flex;

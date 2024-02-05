@@ -50,7 +50,7 @@ function App() {
               <Route path={"/mypage/helpedRequests"} element={<HelpedRequests />} />
               <Route path={"/mypage/helperList"} element={<HelperList />} />
               <Route path={"/mypage/reviewList"} element={<ReviewList />} />
-              <Route path={"/writeReview"} element={<WriteReview />} />
+              <Route path={"/writeReview/:taskId"} element={<WriteReview />} />
               <Route path={"/ChatPage/:roomId"} element={<ChatPageDetail />} />
               <Route path={"/chatpage"} element={<ChatPage />} />
             </Routes>
