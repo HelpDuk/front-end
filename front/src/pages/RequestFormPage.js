@@ -4,8 +4,10 @@ import FileUploader from '../components/FileUploader';
 import PaymentBox from '../components/PaymentBox';
 import "../styles/RequestFormPage.css";
 import axios from 'axios';
+// import { useUser } from "../components/UserContext.js"
 
 function RequestFormPage() {
+  // const { ACCESS_TOKEN } = useUser();
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -95,7 +97,7 @@ function RequestFormPage() {
         console.log("formDataToSend 확인", [...formDataToSend]);
          const response = await axios.post('/api/task', formDataToSend, {
            headers: {
-             'X-AUTH-TOKEN': "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzA3MTEzMDUzLCJleHAiOjE3MDcxMTY2NTN9.MEqirsnBUaC2TD-phbLL6iuiQcyPcKmSD2hfxFoKbHY", // 여기에 토큰 값을 넣어주세요
+             'X-AUTH-TOKEN': "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2IiwiaWF0IjoxNzA3MTY4OTQzLCJleHAiOjE3MDcxNzI1NDN9.I4bR-4LfpzOaMJ2tBq7LMFwO5fs7xJDDWeZtmIqWXGE",
              "Content-Type": "multipart/form-data",
            },
          });
