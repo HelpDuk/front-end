@@ -3,30 +3,25 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* 말풍선을 좌측 정렬하려면 사용 */
-  }
-  
-  /* 말풍선 스타일 */
-  .speechBubble .message {
+}
+
+/* 말풍선 스타일 */
+.speechBubble .message {
     position: relative;
-    background-color: #AAD9BB; /* 말풍선 배경색 */
-    color: black; /* 말풍선 텍스트 색상 */
     border-radius: 8px;
     padding: 10px;
     margin-bottom: 10px;
     max-width: 70%; /* 말풍선 최대 너비 */
-  }
-  .message p {
-    color: black;
-  }
-  
-  /* 말풍선의 꼬리 스타일 */
-  .speechBubble .message::before {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    border-width: 0 8px 15px;
-    border-style: solid;
-    border-color: #3498db transparent transparent transparent; /* 말풍선 배경색과 동일하게 설정 */
-    transform: translateX(-50%);
-  }
+}
+
+.speechBubble .myMessage {
+    align-self: flex-end; /* 말풍선을 우측으로 정렬 */
+    background-color: #AAD9BB; /* 말풍선 배경색 */
+    color: black; /* 말풍선 텍스트 색상 */
+}
+
+.speechBubble .helperMessage {
+    align-self: flex-start; /* 말풍선을 좌측으로 정렬 */
+    background-color: #AAD9BB; /* 말풍선 배경색 */
+    color: black; /* 말풍선 텍스트 색상 */
+}

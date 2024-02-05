@@ -3,13 +3,14 @@ import React, { useState, useEffect } from 'react';
 import Temperature from "../../components/Temperature";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { useUser } from "../../components/UserContext";
 
 function Profile() {
     const { taskId } = useParams();
     const [requestDetail, setrequestDetail] = useState([]);
 
     //let ACCESS_TOKEN = localStorage.getItem("accessToken");
-    let ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzA3MTM0MzA2LCJleHAiOjE3MDcxMzc5MDZ9.Y0TubymIVtS8SLRhplD7beV4tHNV7Rxl4R_g9SegsOY";
+    const { ACCESS_TOKEN } = useUser();
 
 
     //axios를 이용하여 상세 페이지 정보 get
