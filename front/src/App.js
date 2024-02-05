@@ -10,6 +10,7 @@ import HelperList from "./pages/myPage/HelperList";
 import ReviewList from "./pages/myPage/ReviewList";
 import WriteReview from "./pages/myPage/WriteReview";
 import HomePage from "./pages/homePage/HomePage";
+import OtherPage from "./pages/myPage/OtherPage";
 import ChatPage from "./pages/chatPage/ChatPage";
 import ChatPageDetail from "./pages/chatPage/ChatPageDetail";
 import DetailPage from "./pages/detailPage/DetailPage"
@@ -43,6 +44,7 @@ function App() {
               <Route path={"/signup"} element={<Signup />} />
               <Route path={"/alert"} element={<Alert />} />
               <Route path={"/mypage"} element={<Mypage />} />
+              <Route path={"/OtherPage/:otherUserId"} element={<OtherPage />} />
               <Route path={"/requestForm"} element={<RequestForm />} />
               <Route path={"/detailPage/:taskId"} element={<DetailPage />} />
               <Route path={"/mypage/profileEdit"} element={<ProfileEdit />} />

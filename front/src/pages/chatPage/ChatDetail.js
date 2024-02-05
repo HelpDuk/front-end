@@ -3,7 +3,6 @@ import Conversation from "./Conversation";
 import {Link} from "react-router-dom";
 import React, { useRef, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useRoomId } from "../../components/RoomIDContext";
 import axios from 'axios';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
@@ -15,7 +14,7 @@ function ChatDetail() {
 
     const [chatroom, setChatroom] = useState({});
     const { roomId } = useParams();
-    //const { roomId } = useRoomId();
+
     //console.log("방아이디",roomId);
     const [sendButtonClicked, setSendButtonClicked] = useState(false); //전송 버튼 눌렸는지 나타냄(그 때마다 대화 내역 불러오도록)
 
@@ -61,6 +60,7 @@ function ChatDetail() {
             setSendButtonClicked(!sendButtonClicked); // 버튼 클릭 시 상태 변경  
         }
     };
+
     const DoneButton = () => {
         //axios를 이용하여 거래 완료 상태로 put
         const StatusChange = async () => {
@@ -144,8 +144,10 @@ function ChatDetail() {
                     </>
                     )}
                 </div>
-                    <Link to={`../writeReview/${chatroom.taskId}`}>
-                        <button className="requestFormButton" onClick={DoneButton}>거래완료</button>
+
+                    <Link to={`../writeReview/${chatroom.roomId}`} roomId={roomId}>
+                        <button className="requestFormButton">거래완료</button>
+
                     </Link>
             </div>
 

@@ -10,14 +10,12 @@ import Great from "../../assets/image/최고예요.png"
 import { useUser } from '../../components/UserContext';
 
 
-function WriteReview () {
+function WriteReview ({roomId}) {
     const [review, setReview] = useState('');
     const [selectedImage, setSelectedImage] = useState(null);
     const [reviewScore, setReviewScore] = useState("");
     const navigate = useNavigate();
     const { ACCESS_TOKEN } = useUser();
-
-    const { taskId } = useParams();
 
     const reviewChange = (e) => {
         setReview(e.target.value);
@@ -42,25 +40,28 @@ function WriteReview () {
         }
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         if (review && reviewScore) {
             const postData = {
-                roomId: taskId,
-                score: reviewScore,
-                content: review,
+                "roomId": "a495150a-52a0-4a62-95e0-43508fac42af",
+                "score": parseInt(reviewScore, 10),
+                "content": review,
             };
+            console.log("점수 : ", {reviewScore});
+            console.log("내용: ", {review});
 
             axios.post('/api/review', postData, {headers: {
-                'X-AUTH-TOKEN': `${ACCESS_TOKEN}`
+                'X-AUTH-TOKEN': `${ACCESS_TOKEN}`,
+                'Content-Type': 'application/json',
             }})
             .then((response) => {
-                console.log(response.data); 
+                console.log(response.data);
                 alert('후기 저장 완료');
                 navigate('../mypage/myRequests');
             })
             .catch((error) => {
-                console.log({postData}); 
+                console.log({postData});
                 console.error('리뷰 저장에 실패했습니다.', error);
                 alert('리뷰 저장에 실패했습니다.');
             });
@@ -117,7 +118,7 @@ function WriteReview () {
                 </label>
             </div>
             <div className="writePage">
-                <form onSubmit={handleSubmit}>
+                <form>
                     <textarea 
                         value={review}
                         onChange={reviewChange}
@@ -127,7 +128,7 @@ function WriteReview () {
                     />
                     <div className="buttonStyle">
                         <button type="button" onClick={cancelClick} className="cancelButton" style={{backgroundColor: "white"}}>취소하기</button>
-                        <button type="submit" style={{backgroundColor: "#80BCBD"}}>등록하기</button>
+                        <button type="submit" onClick={handleSubmit} style={{backgroundColor: "#80BCBD"}}>등록하기</button>
                     </div>
                 </form>
             </div>

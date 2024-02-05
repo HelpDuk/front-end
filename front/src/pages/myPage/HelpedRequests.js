@@ -14,7 +14,7 @@ function SupportLists() {
     }, []);
 
     const GetHelpedRequests = () => {
-        axios.get('/api/home', {headers: { 
+        axios.get('/api/mypage/othertask', {headers: { 
             'X-AUTH-TOKEN': `${ACCESS_TOKEN}`
         }})
             .then((response) => {
