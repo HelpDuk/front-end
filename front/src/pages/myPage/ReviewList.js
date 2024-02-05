@@ -1,22 +1,47 @@
-import { useLocation } from 'react-router-dom';
 import ReviewDetail from './ReviewDetail';
 import "./ReviewList.css";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useUser } from '../../components/UserContext';
 
 function ReviewList() {
-    const location = useLocation();
-    const reviewNum = location.state ? location.state.reviewNum : 0;
-    console.log({reviewNum})
+
+    const [reviewDate, setReviewData] = useState({ reviewDtoList: [] });
+    const { ACCESS_TOKEN } = useUser();
+
+
+    useEffect(() => {
+        GetReview();
+    }, []);
+
+    const GetReview = () => {
+        axios.get('/api/mypage/review', {headers: {
+            'X-AUTH-TOKEN': `${ACCESS_TOKEN}`
+        }})
+            .then((response) => {
+                if (Array.isArray(response.data)) {
+                    setReviewData(response.data);
+                } else {
+                    console.error("유저가 없음", typeof response.data);
+                    setReviewData({ reviewDtoList: [] });
+                }
+            })  
+            .catch((error) => {
+                console.error("리뷰 데이터를 불러오는데 실패했습니다.", error);
+            });
+    };
+    
 
     return (
         <div className="reviewList"  style={{padding: "20px"}}>
             <h1 className="editTitle">의뢰 후기 상세</h1>
-            <h2 style={{paddingTop: "50px"}}>후기 {reviewNum}개</h2>
-            <div style={{marginLeft: "110px"}}>
-                    <ReviewDetail />
-                    <ReviewDetail />
-                    <ReviewDetail />
-                    <ReviewDetail />
+            <h2 style={{padding: "50px 0 0 20px", fontSize: "24px"}}>후기 {reviewDate.reviewCnt || 0}개</h2>
+            <div className="reviewDetail">
+            {reviewDate.reviewDtoList.map((review) => (
+            <div>
+                <ReviewDetail userId={review.userId} nickName={review.nickName} content={review.content} />
             </div>
+            ))}</div>
         </div>
     )
 }

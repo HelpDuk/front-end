@@ -1,18 +1,24 @@
-import { useUser } from '../../components/UserContext';
+import { useNavigate } from 'react-router-dom';
 import "./ReviewDetail.css";
+import profileImage from '../../assets/image/user.png';
 
-function ReviewDetail() {
-    const { userImage, nickname } = useUser();
+function ReviewDetail({ userId, nickName, content }) {
+    const navigate = useNavigate();
+
+    const Goto = (userId) => {
+        navigate(`/otherpage/${userId}`);
+    }
 
     return (
-        <div className="reviewDetail"  style={{padding: "20px"}}>
-            <div className='detailList'>
+        <div style={{padding: "20px"}}>
+            <div key={userId} className='detailList'>
                 <div className="reviewUser">
-                    <img className="userImg" alt="user" src={userImage} />
-                    <h3>{nickname}</h3>
+                    <img className="userImg" alt="user" src={profileImage} onClick={() => Goto(userId)} />
+                    <h3>{nickName}</h3>
                 </div>
-                <small style={{fontSize: "1.1em"}}>시간 넉넉하게 와주셨엇요. 감사합니다!</small>
+                <small style={{fontSize: "1.1em"}}>{content}</small>
             </div>
+
         </div>
     )
 }

@@ -1,0 +1,123 @@
+.homepage {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 100px;
+}
+
+/*카테고리 바 드롭다운*/
+@keyframes slide-fade-in-dropdown-animation {
+    0% {
+      transform: translateY(-100%);
+    }
+  
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .slide-fade-in-dropdown {
+    overflow: hidden;
+  }
+  
+  .slide-fade-in-dropdown > ul {
+    animation: slide-fade-in-dropdown-animation .4s ease;
+  }
+  
+  /* fade out */
+  
+  @keyframes slide-fade-out-dropdown-animation {
+    0% {
+      transform: translateY(0);
+    }
+  
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+  
+  .slide-fade-out-dropdown {
+    overflow: hidden;
+  }
+  
+  .slide-fade-out-dropdown > ul {
+    animation: slide-fade-out-dropdown-animation 0.4s ease;
+    animation-fill-mode: forwards;
+  }
+
+  .category-dropdown > ul {
+    position: relative;
+    top: 5px;
+    margin-top: 0;
+    margin-bottom: 5px;
+    padding-left: 0;
+    list-style: none;
+
+
+      /* 카테고리 드롭다운 시 표시 박스 */
+      
+      box-sizing: border-box;
+      
+      position: relative;
+      width: 200px;
+      height: px;
+      
+      background: #FFFFFF;
+      border: 1px solid #80BCBD;
+      border-radius: 12px;
+      
+
+}
+
+/*카테고리 버튼*/
+.categoryButton {
+  /* Rectangle 34 */
+  box-sizing: border-box;
+
+  position: relative;
+  width: 249px;
+  height: 60px;
+
+  background: #FFFFFF;
+  border: 1px solid #80BCBD;
+  border-radius: 12px;
+
+  /* 카테고리 */
+  position: relative;
+  width: 200px;
+  height: 30px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 27px;
+
+  color: #000000;
+}
+.categoryButton h4 {
+  display: flex; /* 내부 요소들을 수평으로 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  margin-left: 10px; /* 텍스트와 네모 박스 사이의 간격 설정 */
+  margin-right: 5px;
+}
+.categoryButton h4 img {
+  margin-right: 10px; /* 이미지와 텍스트 사이의 간격을 조절합니다. */
+}
+
+
+aside {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%; /* 화면 전체 높이로 설정하거나 원하는 높이로 조절하세요 */
+  background-color:transparent; /* 배경색을 원하는 색상으로 설정하세요 */
+  padding: 20px;
+  margin: 100px;
+  z-index: 1; /* 다른 컴포넌트 위에 위치하도록 설정하세요 */
+}
+
+aside > * {
+  margin-bottom: 20px;
+}
+
