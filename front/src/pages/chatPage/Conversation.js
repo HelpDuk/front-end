@@ -1,9 +1,14 @@
 import "./Conversation.css"; 
 
-function Conversation() { 
+function Conversation({allMessage}) { 
+    //console.log("가져온 대화 내역: ", allMessage);
     return(
         <div className="speechBubble">
-            <p>hi</p>
+            {allMessage.map((message) => (
+                    <div className="message">
+                            <p>{message.content}</p>
+                    </div>
+                ))}
         </div>
     );
 }

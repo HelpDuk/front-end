@@ -1,11 +1,14 @@
 import "./ChatRoom.css";
-import ProfileImg from "../../assets/chatPage/profileImg.png";
 import { useNavigate } from 'react-router-dom';
+import { useRoomId } from "../../components/RoomIDContext";
 
 function ChatRoom({chat}) {
+    const { setRoomId } = useRoomId();
+
     const navigate = useNavigate();
 
     const goToChatRoom = (roomId) => {
+        setRoomId(roomId);
         navigate(`/chatPage/${roomId}`);
     }
 
@@ -15,7 +18,7 @@ function ChatRoom({chat}) {
                     <div className="chatroom">
                             <button className="chatroomButton" key={chat.roomId} onClick={() => goToChatRoom(chat.roomId)}>
                                 <div className="chatprofile">
-                                    <img src={ProfileImg} />
+                                    <img src={chat.helper.profileImage} />
                                 </div>
                                 <div className="chatroomInfo">
                                     <div className="userName">

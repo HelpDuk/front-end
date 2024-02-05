@@ -35,3 +35,9 @@
     margin-bottom: 10px; /* 선 위쪽에 여백 추가 */
     margin-left: 1%; /* 선을 중앙에 오도록 좌우 여백 조절 */
 }
+.chatroom img {
+  width: 50px; /* 원하는 너비(px)로 설정하세요 */
+  height: 50px; /* 원하는 높이(px)로 설정하세요 */
+  object-fit: cover; /* 이미지를 container에 맞추기 위해 사용 (가능한 값: fill, contain, cover 등) */
+  border-radius: 50%; /* 원형 이미지로 표시하려면 추가 (사각형 이미지는 필요 없음) */
+}

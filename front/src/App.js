@@ -17,6 +17,7 @@ import Login from "./pages/LoginPage";
 import Signup from "./pages/SignupPage"
 import Alert from "./pages/AlertPage"
 import RequestForm from "./pages/RequestFormPage"
+import { RoomIdProvider } from './components/RoomIDContext';
 import { UserProvider } from './components/UserContext';
 import SampleImg from "./assets/homePage/sample.png";
 import { useState } from "react"
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <UserProvider>
+    <RoomIdProvider>
       <MockProvider>
         <ChatMockProvider>
           <ConversationMockProvider>
@@ -59,6 +61,7 @@ function App() {
       </ConversationMockProvider>
       </ChatMockProvider>
       </MockProvider>
+    </RoomIdProvider>
     </UserProvider>
   );
 }
