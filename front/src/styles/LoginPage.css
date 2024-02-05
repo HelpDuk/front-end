@@ -49,7 +49,7 @@ input[type="password"]:focus {
 }
 
 .login-button:hover {
-    background-color: #6CA9AA; 
+    outline: 1px solid #6CA9AA;
 }
 /* 
 css 안먹음 이슈
