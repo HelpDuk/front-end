@@ -4,13 +4,15 @@ import Profile from "./Profile";
 import DetailContents from "./DetailContents";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { useUser } from "../../components/UserContext";
+
 
 function DetailPage({mockRequest}) { 
     const { taskId } = useParams();
     const [requestDetail, setrequestDetail] = useState([]);
 
     //let ACCESS_TOKEN = localStorage.getItem("accessToken");
-    let ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzA3MTM0MzA2LCJleHAiOjE3MDcxMzc5MDZ9.Y0TubymIVtS8SLRhplD7beV4tHNV7Rxl4R_g9SegsOY";
+    const { ACCESS_TOKEN } = useUser();
 
     //axios를 이용하여 상세 페이지 정보 get
     // useEffect를 이용하여 컴포넌트가 마운트될 때 한 번만 실행되도록 설정
@@ -19,7 +21,7 @@ function DetailPage({mockRequest}) {
       const RequestDetail =  async () => {
           try {
               const response = await axios.get(
-                `http://localhost:3000//api/task/${taskId}`,
+                `http://localhost:3000/api/task/${taskId}`,
                 {
                   headers: {
                     'X-AUTH-TOKEN': `${ACCESS_TOKEN}`, // 여기에 토큰 값을 넣어주세요

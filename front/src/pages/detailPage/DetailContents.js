@@ -3,8 +3,11 @@ import "./DetailContents.css";
 import {Link} from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { useUser } from "../../components/UserContext";
 
 function DetailContents() { 
+    //let ACCESS_TOKEN = localStorage.getItem("accessToken");
+    const { ACCESS_TOKEN } = useUser();
 
     const { taskId } = useParams();
     const [requestDetail, setrequestDetail] = useState([]);
@@ -12,10 +15,7 @@ function DetailContents() {
     const [taskStatus, setTaskStatus] = useState(requestDetail ? requestDetail.taskStatus : '');
     const [updatedStatus, setUpdatedStatus] = useState("");
     const didMountRef = useRef(false); 
-
-    //let ACCESS_TOKEN = localStorage.getItem("accessToken");
-    let ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzA3MTM0MzA2LCJleHAiOjE3MDcxMzc5MDZ9.Y0TubymIVtS8SLRhplD7beV4tHNV7Rxl4R_g9SegsOY";
-
+    
     //axios를 이용하여 상세 페이지 정보 get
     // useEffect를 이용하여 컴포넌트가 마운트될 때 한 번만 실행되도록 설정
     useEffect(() => {
@@ -59,17 +59,29 @@ function DetailContents() {
                 try {
                     const response = await axios.put(
                         `http://localhost:3000/api/task/${taskId}`,
-                        `"${updatedStatus}"`, //문자열로 전달
+                        { taskStatus: updatedStatus },  // 객체로 감싸서 전송
+                        {
+                          headers: {
+                            'Content-Type': 'application/json',
+                            'X-AUTH-TOKEN': `${ACCESS_TOKEN}`,
+                          },
+                        }
+                      );
+                      console.log("put한 거래 상태:", response.data);
+
+                      // 변경된 상태가 반영된 후에 RequestDetail 함수를 호출->선택된 값으로 해당 글의 거래 상태 표시도 바꾸도록
+                    const updatedResponse = await axios.get(
+                        `http://localhost:3000/api/task/${taskId}`,
                         {
                             headers: {
-                                'Content-Type': 'application/json',
                                 'X-AUTH-TOKEN': `${ACCESS_TOKEN}`,
                             },
                         }
                     );
-                    console.log("put한 거래 상태:", response.data);
-                } catch (error) {
-                    console.error('상태 변화 API 호출 오류:', error);
+                    setrequestDetail(updatedResponse.data);
+                
+                    } catch (error) {
+                      console.error('상태 변화 API 호출 오류:', error);
                 }
             };
             StatusChange();
@@ -80,9 +92,10 @@ function DetailContents() {
     //axios를 사용해 채팅방 정보 post(채팅하기 버튼)
     const handleMoveToChat = async () => {
         try {
-            await axios.post('/chat/room', {params: { helperId:requestDetail.helperId, taskId:requestDetail.taskId}});
+            const response = await axios.post('http://localhost:3000/chat/room', { params: { helperId:2, taskId:2 } } );
+            console.log("post된 채팅방 생성 데이터", response.data );
         } catch (error) {
-            console.error('채팅방 데이터 전송 중 오류 발생:', error);
+            console.error('채팅방 생성 데이터 post 중 오류 발생:', error);
         }
     };
 

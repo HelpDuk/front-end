@@ -97,6 +97,7 @@ function RequestFormPage() {
         console.log("formDataToSend 확인", [...formDataToSend]);
          const response = await axios.post('/api/task', formDataToSend, {
            headers: {
+
              'X-AUTH-TOKEN': "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2IiwiaWF0IjoxNzA3MTY4OTQzLCJleHAiOjE3MDcxNzI1NDN9.I4bR-4LfpzOaMJ2tBq7LMFwO5fs7xJDDWeZtmIqWXGE",
              "Content-Type": "multipart/form-data",
            },
