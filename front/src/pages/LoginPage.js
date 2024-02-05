@@ -2,13 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import "../styles/LoginPage.css";
 import cloud_black from "../assets/image/cloud_black.png";
-
-/* 모의 데이터
-const mockUsers = [
-  { email: 'user1@example.com', password: 'pw1' },
-  { email: 'user2@example.com', password: 'pw2' },
-];
-*/
+import axios from 'axios';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -25,29 +19,26 @@ function LoginPage() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    // 이메일과 비밀번호를 확인하는 로직을 여기에 구현?
-    const isAuthenticated = true; // 이 부분을 실제 로그인 로직으로 대체할 것
-
-    if (isAuthenticated) {
-      // 로그인이 성공했을 때만 홈페이지로 이동
-      navigate('/homepage');
-    } else {
-      // 로그인이 실패했을 때 페이지 새로고침
-      window.location.reload();
-      alert('이메일 또는 비밀번호가 맞지 않습니다.');
-    }
-
-    /* 모의데이터로 test
-    // 입력된 이메일과 비밀번호가 모의 데이터와 일치하는지 확인합니다.
-    const user = mockUsers.find(u => u.email === email && u.password === password);
-    if (user) {
-      // 올바른 경우에는 홈페이지로 이동합니다.
-      navigate('/homepage');
-    } else {
-      // 잘못된 경우에는 알림창을 띄웁니다.
-      alert('이메일 또는 비밀번호가 맞지 않습니다.');
-    }
-    */
+    // axios를 사용하여 서버에 로그인 요청을 보냅니다.
+    axios.post('http://localhost:3000/api/sign/sign-in', null,{ params:  {
+      userEmail: email,
+      password: password
+  } })
+      .then((response) => {
+        // 서버로부터의 응답을 확인하여 로그인이 성공한 경우
+        if (response.data.success) {
+          // 로그인이 성공했을 때만 홈페이지로 이동
+          navigate('/homepage');
+        } else {
+          // 로그인이 실패한 경우 페이지 새로고침
+          window.location.reload();
+          alert('이메일 또는 비밀번호가 맞지 않습니다.');
+        }
+      })
+      .catch((error) => {
+        // 서버 요청이 실패한 경우
+        console.error(error);
+      });
   }
 
   return (
