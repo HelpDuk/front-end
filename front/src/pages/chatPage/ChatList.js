@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import "./ChatList.css";
 import ChatRoom from "./ChatRoom";
 import axios from 'axios';
-
+import { useUser } from "../../components/UserContext";
 
 function ChatList() { 
     const [chatrooms, setChatrooms] = useState([]);
 
     //let ACCESS_TOKEN = localStorage.getItem("accessToken");
-    let ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1IiwiaWF0IjoxNzA3MTU0MTAyLCJleHAiOjE3MDcxNTc3MDJ9.zZ0ZaNXc4FqNX5TwyoRhzB08oqMN9dLfhPMClKMwFbg";
+    const { ACCESS_TOKEN } = useUser();
 
     // useEffect를 이용하여 컴포넌트가 마운트될 때 한 번만 실행되도록 설정
     useEffect(() => {
