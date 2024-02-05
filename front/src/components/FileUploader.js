@@ -3,28 +3,43 @@ import "../styles/RequestContent.css";
 import camera from "../assets/image/camera.png";
 import "./LocationTimeSelector.js";
 import LocationTimeSelector from './LocationTimeSelector.js';
+// import axios from 'axios';
 
-function FileUploader( { onFileChange }) {
-    // 파일 상태
-    // const [file, setFile] = useState(null);
+function FileUploader({ onFileChange, onLocationChange, onDetailCategoryChange, onTimeChange }) {
     const [errorMessage, setErrorMessage] = useState('');
 
     // 파일 선택 핸들러
     const handleFileChange = (e) => {
-        const selectedFile = e.target.files[0];
-        // 이미지 파일인지 확인
-        if (selectedFile && selectedFile.type.includes('image')) {
+        const selectedFiles = e.target.files;
+        const validFiles = [];
+
+        for (let i = 0; i < selectedFiles.length; i++) {
+            const file = selectedFiles[i];
+            if (file && file.type.includes('image')) {
+                validFiles.push(file);
+            }
+        }
+
+        if (validFiles.length > 0) {
             setErrorMessage('');
-            onFileChange(true); // 이미지가 삽입되었음을 부모 컴포넌트에 전달
+            onFileChange(validFiles); // 배열로 전달
         } else {
             setErrorMessage('이미지 파일만 선택해주세요.');
-            onFileChange(false); // 이미지가 삽입되지 않았음을 부모 컴포넌트에 전달
+            onFileChange([]); // 빈 배열 전달
         }
     };
 
+ 
+
+
     return (
         <div className="vertical-align-container">
-            <LocationTimeSelector />
+              <LocationTimeSelector
+                onLocationChange={onLocationChange}
+                onDetailCategoryChange={onDetailCategoryChange}
+                onTimeChange={onTimeChange}
+            />
+            <br />
             <br />
             <div className='file-upload'>
                 <div className="upload-wrapper">

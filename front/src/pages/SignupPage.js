@@ -61,12 +61,12 @@ function SignupPage() {
     }
     
     const passwordCheckHandler = (password, confirm) => {  // 비밀번호 유효성 검사 Handler 구현
-        const passwordRegex = /^[a-zA-z0-9]{8,15}$/;
+        const passwordRegex = /^[a-zA-z0-9]{4,15}$/;
         if (password === '') {
           setPasswordError('비밀번호를 입력해주세요.');
           return false;
         } else if (!passwordRegex.test(password)) {
-          setPasswordError('비밀번호는 8~15자의 영문 대/소문자, 숫자만 입력 가능합니다.');
+          setPasswordError('비밀번호는 4~15자의 영문 대/소문자, 숫자만 입력 가능합니다.');
           return false;
         } else if (confirm !== password) {
           setPasswordError('');
@@ -79,51 +79,48 @@ function SignupPage() {
         }
     }
 
-    // const signupHandler = () => {
-    //     const isIdValid = idCheckHandler(id);
-    //     const isPasswordValid = passwordCheckHandler(password, confirm);
-    //     const isEmailValid = validateEmail();
-
-    //     if (isIdValid && isPasswordValid && isEmailValid) {
-    //         axios.post('/signup', { email, id, password, confirm })
-    //             .then((response) => {
-    //                 alert('환영합니다! 부름부릉 회원가입이 완료되었습니다.');
-    //                 navigate('/mypage'); // 성공적으로 가입한 후 /mypage로 이동
-    //             })
-    //             .catch((error) => {
-    //                 console.error(error);
-    //             });
-    //     } else {
-    //         console.log('유효성 검사를 통과하지 못했습니다.');
-    //     }
-    // }
-
-    const signupHandler = () => {
-        const isIdValid = idCheckHandler(id);
-        const isPasswordValid = passwordCheckHandler(password, confirm);
-        const isEmailValid = validateEmail();
-    
-        if (isIdValid && isPasswordValid && isEmailValid) {
-            // axios.post('/signup', { email, id, password, confirm })
-            //     .then((response) => {
-            //         alert('환영합니다! 부름부릉 회원가입이 완료되었습니다.');
-            //         navigate('/mypage'); // 성공적으로 가입한 후 /mypage로 이동
-            //     })
-            //     .catch((error) => {
-            //         console.error(error);
-            //     });
-            alert('회원가입 기능은 현재 비활성화되어 있습니다. 백엔드 서버가 준비되면 다시 활성화해 주세요.');
-        } else {
-            console.log('유효성 검사를 통과하지 못했습니다.');
-        }
-    }
-    
-
     const validateEmail = () => {
         const pattern = /^[a-zA-Z0-9._%+-]+@duksung.ac.kr$/;
         const isValidEmail = pattern.test(email);
-        setIsEmailValid(isValidEmail); // 수정된 부분
+        setIsEmailValid(isValidEmail);
         return isValidEmail;
+    }
+
+    const onSubmit = (event) => {
+        event.preventDefault();
+
+        const isIdValid = idCheckHandler(id);
+        const isPasswordValid = passwordCheckHandler(password, confirm);
+        const isEmailValid = validateEmail();
+
+        console.log("이메일: ", email);
+        console.log("비밀번호: ", password);
+    
+        if (isIdValid && isPasswordValid && isEmailValid) {
+            // 회원가입 요청을 보내기
+            axios.post('http://localhost:3000/api/sign/sign-up', null, { params:  {
+                userEmail: email,
+                password: password
+            } })
+                .then((response) => {
+                    if (response.data.success) {
+                        // 회원가입 성공
+                        alert('환영합니다! 부름부릉 회원가입이 완료되었습니다.');
+                        navigate('/login'); // 로그인 페이지로 이동
+                    } else {
+                        // 회원가입 실패
+                        // 로그인이 실패한 경우 페이지 새로고침
+                        window.location.reload();
+                        alert('다시 시도해주세요.');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error occurred during signup:', error);
+                    alert('회원가입 중 오류가 발생했습니다.');
+                });
+        } else {
+            console.log('유효성 검사를 통과하지 못했습니다.');
+        }
     }
 
 
@@ -131,12 +128,12 @@ function SignupPage() {
     return (
         <div className="signup">
             <h2 className='title'>회원가입</h2>
-            <form onSubmit={(e) => { e.preventDefault(); signupHandler(); }}>
+            <form onSubmit={onSubmit}>
                 <div className="email-label">이메일</div>
                 <input name="email" type="email" placeholder="user@duksung.ac.kr" value={email} onChange={onEmailHandler} />
                 {!isEmailValid && <small>덕성여자대학교 웹메일로만 가입이 가능합니다.</small>}
                 <div className="pw-label">비밀번호</div>
-                <span>영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요.</span>
+                <span>영문, 숫자를 포함한 4자 이상의 비밀번호를 입력해주세요.</span>
                 <br />
                 <input name="password" type="password" placeholder="비밀번호" value={password} onChange={onChangePasswordHandler} />
                 {passwordError && <small>{passwordError}</small>}
