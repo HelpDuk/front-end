@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useUser } from '../../components/UserContext';
 
-
 function Request({Keyword, selectedCategories}) {
 
     console.log("Request 키워드: ", Keyword);
