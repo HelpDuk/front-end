@@ -92,7 +92,7 @@ export const UserProvider = ({ children }) => {
     //     setlikeUserId(likeUserId.filter(id => id !== userId));
     // };
     
-    const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1IiwiaWF0IjoxNzA3MTM1NzMxLCJleHAiOjE3MDcxMzkzMzF9.rpK3roWpi3L9HJuoIqIk8TljE-VQLHCUJ5BJiKNaAK4'
+    const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2IiwiaWF0IjoxNzA3MTY3MTgxLCJleHAiOjE3MDcxNzA3ODF9.6RgL7c2-j44xfhNiEoB0zAkJIUAJ7d2pZRHzaDm9iD0'
 
     return (
         <UserContext.Provider value={{ ACCESS_TOKEN }}>

@@ -19,12 +19,7 @@ function ReviewList() {
             'X-AUTH-TOKEN': `${ACCESS_TOKEN}`
         }})
             .then((response) => {
-                if (Array.isArray(response.data)) {
-                    setReviewData(response.data);
-                } else {
-                    console.error("유저가 없음", typeof response.data);
-                    setReviewData({ reviewDtoList: [] });
-                }
+                setReviewData(response.data);
             })  
             .catch((error) => {
                 console.error("리뷰 데이터를 불러오는데 실패했습니다.", error);
@@ -39,7 +34,7 @@ function ReviewList() {
             <div className="reviewDetail">
             {reviewDate.reviewDtoList.map((review) => (
             <div>
-                <ReviewDetail userId={review.userId} nickName={review.nickName} content={review.content} />
+                <ReviewDetail userId={review.otherUserId} nickName={review.nickName} content={review.content} />
             </div>
             ))}</div>
         </div>
