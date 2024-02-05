@@ -10,8 +10,8 @@ import Stomp from 'stompjs';
 
 function ChatDetail() { 
     const [chatroom, setChatroom] = useState({});
-    //const { roomId } = useParams();
-    const { roomId } = useRoomId();
+    const { roomId } = useParams();
+    // const { roomId } = useRoomId();
     //console.log("방아이디",roomId);
     const [sendButtonClicked, setSendButtonClicked] = useState(false); //전송 버튼 눌렸는지 나타냄(그 때마다 대화 내역 불러오도록)
 
@@ -59,7 +59,7 @@ function ChatDetail() {
     };
 
     //let ACCESS_TOKEN = localStorage.getItem("accessToken");
-    let ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzA3MTMwNTUwLCJleHAiOjE3MDcxMzQxNTB9.sM1uh03yQ85R2OYRy74F_cyx1o4Bngk_JAljpgT2Ri4";
+    let ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1IiwiaWF0IjoxNzA3MTU0MTAyLCJleHAiOjE3MDcxNTc3MDJ9.zZ0ZaNXc4FqNX5TwyoRhzB08oqMN9dLfhPMClKMwFbg";
 
     // useEffect를 이용하여 컴포넌트가 마운트될 때 한 번만 실행되도록 설정
     useEffect(() => {
@@ -121,7 +121,7 @@ function ChatDetail() {
                     </>
                     )}
                 </div>
-                    <Link to={`../writeReview/${chatroom.taskId}`}>
+                    <Link to={`../writeReview/${chatroom.roomId}`} roomId={roomId}>
                         <button className="requestFormButton">거래완료</button>
                     </Link>
             </div>

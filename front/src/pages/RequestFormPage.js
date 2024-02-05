@@ -95,8 +95,7 @@ function RequestFormPage() {
         console.log("formDataToSend 확인", [...formDataToSend]);
          const response = await axios.post('/api/task', formDataToSend, {
            headers: {
-             'X-AUTH-TOKEN': "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzA3MTEzMDUzLCJleHAiOjE3MDcxMTY2NTN9.MEqirsnBUaC2TD-phbLL6iuiQcyPcKmSD2hfxFoKbHY", // 여기에 토큰 값을 넣어주세요
-             "Content-Type": "multipart/form-data",
+             'X-AUTH-TOKEN': "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2IiwiaWF0IjoxNzA3MTM5NjQ5LCJleHAiOjE3MDcxNDMyNDl9.GUZMtic27c6khQqfLjakROstqDxahDNksDSW7zEZFdY",
            },
          });
          console.log('응답:', response.data);
