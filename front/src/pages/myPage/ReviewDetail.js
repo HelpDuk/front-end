@@ -1,8 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import "./ReviewDetail.css";
-import profileImage from '../../assets/image/user.png';
 
-function ReviewDetail({ userId, nickName, content }) {
+function ReviewDetail({ userId, nickName, content, profileImage }) {
     const navigate = useNavigate();
 
     const Goto = (userId) => {
@@ -16,7 +15,7 @@ function ReviewDetail({ userId, nickName, content }) {
                     <img className="userImg" alt="user" src={profileImage} onClick={() => Goto(userId)} />
                     <h3>{nickName}</h3>
                 </div>
-                <small style={{fontSize: "1.1em"}}>{content}</small>
+                <small style={{fontSize: "1.1em", color: "black"}}>{content}</small>
             </div>
 
         </div>

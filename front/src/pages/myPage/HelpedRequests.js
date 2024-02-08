@@ -3,6 +3,7 @@ import axios from 'axios';
 import "../../styles/ProfileEdit.css"
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../components/UserContext';
+import defaultProfileImage from '../../assets/image/user.png';
 
 function SupportLists() {
     const [userPosts, setUserPosts] = useState([]);
@@ -14,7 +15,7 @@ function SupportLists() {
     }, []);
 
     const GetHelpedRequests = () => {
-        axios.get('/api/home', {headers: { 
+        axios.get('/api/mypage/othertask', {headers: { 
             'X-AUTH-TOKEN': `${ACCESS_TOKEN}`
         }})
             .then((response) => {

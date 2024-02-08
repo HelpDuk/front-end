@@ -144,7 +144,7 @@ function ChatDetail() {
                     </>
                     )}
                 </div>
-                    <Link to={`../writeReview/${chatroom.taskId}`}>
+                    <Link to={`../writeReview/${chatroom.roomId}`}>
                         <button className="requestFormButton" onClick={DoneButton}>거래완료</button>
                     </Link>
             </div>

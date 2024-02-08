@@ -27,6 +27,8 @@ function LoginPage() {
       .then((response) => {
         // 서버로부터의 응답을 확인하여 로그인이 성공한 경우
         if (response.data.success) {
+          localStorage.setItem('ACCESS_TOKEN', response.data.token);
+          console.log(response.data)
           // 로그인이 성공했을 때만 홈페이지로 이동
           navigate('/homepage');
         } else {

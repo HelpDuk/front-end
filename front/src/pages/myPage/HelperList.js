@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import fullheart from '../../assets/image/하트.png';
 import "./HelperList.css";
-import profileImage from '../../assets/image/user.png';
+import defaultProfileImage from '../../assets/image/user.png';
 import { useUser } from '../../components/UserContext';
 
 function HelperList() {
@@ -21,10 +21,11 @@ function HelperList() {
             'X-AUTH-TOKEN': `${ACCESS_TOKEN}`
         }})
             .then((response) => {
-                if (Array.isArray(response.data)) {
-                    setLikeUsers(response.data);
+                console.log("h", response.data.likedUserList);
+                if (Array.isArray(response.data.likedUserList)) {
+                    setLikeUsers(response.data.likedUserList);
                 } else {
-                    console.error("유저가 없음", typeof response.data);
+                    console.error("유저 없음", typeof response.data);
                     setLikeUsers([]);
                 }
             })        
@@ -42,17 +43,22 @@ function HelperList() {
                 console.error("관심 목록 삭제에 실패했습니다.", error);
             });
     };
-    
+
+
     return (
         <div style={{padding: "20px"}}>
             <h1 className="editTitle" style={{paddingBottom: "30px"}}>관심 목록</h1>
-            {likeUsers.map((user, index) => (
+            {likeUsers.map((likeUser, index) => {
+            const user = likeUser.likeUserId; 
+            
+            return (
                 <div key={index} className='helperList'>
                     <img alt="heart" src={fullheart} onClick={() => handleRemoveFromLikes(user.userId)} />
-                    <img className="userImg" alt="user" src={profileImage} />
+                    <img className="userImg" alt="user" src={user.profileImage || defaultProfileImage} />
                     <h1>{user.nickName}</h1>
                 </div>
-            ))}
+            )
+        })}
         </div>
     )
 }

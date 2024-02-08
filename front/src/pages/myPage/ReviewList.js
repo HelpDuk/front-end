@@ -3,6 +3,7 @@ import "./ReviewList.css";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useUser } from '../../components/UserContext';
+import defaultProfileImage from '../../assets/image/user.png';
 
 function ReviewList() {
 
@@ -19,12 +20,8 @@ function ReviewList() {
             'X-AUTH-TOKEN': `${ACCESS_TOKEN}`
         }})
             .then((response) => {
-                if (Array.isArray(response.data)) {
-                    setReviewData(response.data);
-                } else {
-                    console.error("유저가 없음", typeof response.data);
-                    setReviewData({ reviewDtoList: [] });
-                }
+                console.log(response.data);
+                setReviewData(response.data);
             })  
             .catch((error) => {
                 console.error("리뷰 데이터를 불러오는데 실패했습니다.", error);
@@ -39,7 +36,7 @@ function ReviewList() {
             <div className="reviewDetail">
             {reviewDate.reviewDtoList.map((review) => (
             <div>
-                <ReviewDetail userId={review.userId} nickName={review.nickName} content={review.content} />
+                <ReviewDetail userId={review.userId} nickName={review.nickName} content={review.content} profileImage={review.profileImage || defaultProfileImage} />
             </div>
             ))}</div>
         </div>

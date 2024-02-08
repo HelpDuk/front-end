@@ -5,7 +5,7 @@ function Conversation({allMessage, chatroomUser}) {
     return(
         <div className="speechBubble">
             {allMessage.map((message) => (
-                <div className={`message ${1 === chatroomUser ? 'myMessage' : 'helperMessage'}`}>
+                <div className={`message ${message.senderId.userId === chatroomUser ? 'myMessage' : 'helperMessage'}`}>
                     <p>{message.content}</p>
                 </div>
                 ))}
