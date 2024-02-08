@@ -11,7 +11,9 @@ const RequestList = () => {
     const [dropdownVisibility, setDropdownVisibility] = useState(false);
     const [keyword, setKeyword] = useState('');
 
+
     // 카테고리 별 선택 여부 저장
+
     const [selectedCategories, setSelectedCategories] = useState({
         onlyYet: false,
         onlyMine: false,

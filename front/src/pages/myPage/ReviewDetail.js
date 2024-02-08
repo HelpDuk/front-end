@@ -4,8 +4,8 @@ import "./ReviewDetail.css";
 function ReviewDetail({ userId, nickName, content, profileImage }) {
     const navigate = useNavigate();
 
-    const Goto = (userId) => {
-        navigate(`/otherpage/${userId}`);
+    const Goto = (otherUserId) => {
+        navigate(`/otherpage/${otherUserId}`);
     }
 
     return (
