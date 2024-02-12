@@ -7,7 +7,7 @@ export const useUser = () => useContext(UserContext);
 
 export const UserProvider = ({ children }) => {
     
-    const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzA3MzY2NDgxLCJleHAiOjE3MDczNzAwODF9.ygCvIyZLckPA1qFNTICd-sBfJ560U_g8eejbSgeg18g'
+    const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzA3NzM2MDUxLCJleHAiOjE3MDc3Mzk2NTF9.1pOBrisGLShrmX3gWoNeKKjt9qZ5WH71sTaL6fmlepE'
 
     return (
         <UserContext.Provider value={{ ACCESS_TOKEN }}>
