@@ -4,10 +4,13 @@ import {Link} from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useUser } from "../../components/UserContext";
+import { useNavigate } from 'react-router-dom';
 
 function DetailContents() { 
     //let ACCESS_TOKEN = localStorage.getItem("accessToken");
     const { ACCESS_TOKEN } = useUser();
+
+    const navigate = useNavigate();
 
     const { taskId } = useParams();
     const [requestDetail, setrequestDetail] = useState([]);
@@ -86,14 +89,23 @@ function DetailContents() {
             };
             StatusChange();
         }
-    });
+    }, [updatedStatus]);
     
 
     //axios를 사용해 채팅방 정보 post(채팅하기 버튼)
     const handleMoveToChat = async () => {
+        console.log("taskId 확인: ", taskId);
+        console.log("helperId 확인: ", ); 
         try {
-            const response = await axios.post('http://localhost:3000/chat/room', { params: { helperId:2, taskId:2 } } );
+            const response = await axios.post('http://localhost:3000/chat/room', null,
+            { headers: {
+                'X-AUTH-TOKEN': `${ACCESS_TOKEN}`,
+            },
+            params: { helperId: 3, taskId: taskId }
+            } 
+            );
             console.log("post된 채팅방 생성 데이터", response.data );
+            navigate('/chatpage'); //채팅 페이지로 이동
         } catch (error) {
             console.error('채팅방 생성 데이터 post 중 오류 발생:', error);
         }
@@ -140,9 +152,7 @@ function DetailContents() {
                 )}
                 
                 <button className="moveToChat" onClick={handleMoveToChat}>
-                    <Link to={"/chatpage"}>
-                        <h4>채팅하기</h4>
-                    </Link>
+                    <h4>채팅하기</h4>
                 </button>
             </div>
             </div>

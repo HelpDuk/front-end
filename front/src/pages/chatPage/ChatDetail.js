@@ -104,7 +104,7 @@ function ChatDetail() {
             }
         };
         ChatRoomData();
-      }, []);
+      }, );
 
 
     const [allMessage, setAllMessage] = useState([]);
@@ -130,7 +130,7 @@ function ChatDetail() {
             } 
         };
         AllMessageData();
-    });
+    }, []);
     
 
     return(
@@ -144,10 +144,8 @@ function ChatDetail() {
                     </>
                     )}
                 </div>
-
-                    <Link to={`../writeReview/${chatroom.roomId}`} roomId={roomId}>
-                        <button className="requestFormButton">거래완료</button>
-
+                    <Link to={`../writeReview/${chatroom.roomId}`}>
+                        <button className="requestFormButton" onClick={DoneButton}>거래완료</button>
                     </Link>
             </div>
 

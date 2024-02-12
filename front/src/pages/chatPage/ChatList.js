@@ -34,7 +34,7 @@ function ChatList() {
   
       findAllRoom();
   
-      });
+      }, );
 
     return(
         <div className="chatlist">

@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import ReviewDetail from "./ReviewDetail";
 import Temperature from "../../components/Temperature";
 import { useEffect, useState } from "react";
-import profileImage from "../../assets/image/user.png";
+import defaultProfileImage from '../../assets/image/user.png';
 import axios from "axios";
 import { useUser } from "../../components/UserContext";
 
@@ -40,13 +40,11 @@ function OtherPage() {
 
  const addHeart = async () => {
     try {
-      await axios.post(`/api/like/create`, {
-        likeUserId: parseInt(otherUserId),
-      }, {
-        headers: {
-            "X-AUTH-TOKEN": `${ACCESS_TOKEN}`,
-        },
-      });
+      await axios.post(`/api/like/create`, null, {params: {
+        likeUserId: parseInt(otherUserId, 10),
+      }, headers: {
+        "X-AUTH-TOKEN": `${ACCESS_TOKEN}`,
+    }});
       setLike(true); // 상태를 업데이트하여 UI에 반영
     } catch (error) {
       console.error("하트 추가에 실패했습니다.", error);
@@ -55,12 +53,11 @@ function OtherPage() {
 
   const deleteHeart = async () => {
     try {
-      await axios.delete(`/api/like/delete`, {
-        data: { likeUserId: parseInt(otherUserId) },
-        headers: {
-            "X-AUTH-TOKEN": `${ACCESS_TOKEN}`,
-        },
-      });
+      await axios.delete(`/api/like/delete`, {params: {
+        likeUserId: parseInt(otherUserId, 10),
+      }, headers: {
+        "X-AUTH-TOKEN": `${ACCESS_TOKEN}`,
+    }});
       setLike(false); // 상태를 업데이트하여 UI에 반영
     } catch (error) {
       console.error("하트 삭제에 실패했습니다.", error);
@@ -74,6 +71,8 @@ function OtherPage() {
       addHeart(); // 좋아요 상태가 아니면 추가
     }
   };
+
+  const profileImage = userDetails.profileImage || defaultProfileImage;
 
   return (
     <div className="mypage" style={{ padding: "20px" }}>
@@ -124,6 +123,7 @@ function OtherPage() {
               userDetails.reviewDtoList.map((review) => (
                 <div style={{ marginLeft: "30px" }}>
                   <ReviewDetail
+                  profileImage={review.profileImage}
                     otherUserId={review.otherUserId}
                     nickName={review.nickName}
                     content={review.content}

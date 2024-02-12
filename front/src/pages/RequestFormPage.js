@@ -97,8 +97,7 @@ function RequestFormPage() {
         console.log("formDataToSend 확인", [...formDataToSend]);
          const response = await axios.post('/api/task', formDataToSend, {
            headers: {
-
-             'X-AUTH-TOKEN': "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2IiwiaWF0IjoxNzA3MTY4OTQzLCJleHAiOjE3MDcxNzI1NDN9.I4bR-4LfpzOaMJ2tBq7LMFwO5fs7xJDDWeZtmIqWXGE",
+             'X-AUTH-TOKEN': "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzA3NzMxOTI1LCJleHAiOjE3MDc3MzU1MjV9.dUHRrQrCo99qtJ0QT2JqwwsSqYUNRE9aGf2AVIq-AVU",
              "Content-Type": "multipart/form-data",
            },
          });
