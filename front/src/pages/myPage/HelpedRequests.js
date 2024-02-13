@@ -3,6 +3,7 @@ import axios from 'axios';
 import "../../styles/ProfileEdit.css"
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../components/UserContext';
+import defaultProfileImage from '../../assets/image/user.png';
 
 function SupportLists() {
     const [userPosts, setUserPosts] = useState([]);

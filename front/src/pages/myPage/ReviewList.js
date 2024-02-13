@@ -3,6 +3,7 @@ import "./ReviewList.css";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useUser } from '../../components/UserContext';
+import defaultProfileImage from '../../assets/image/user.png';
 
 function ReviewList() {
 
@@ -19,6 +20,7 @@ function ReviewList() {
             'X-AUTH-TOKEN': `${ACCESS_TOKEN}`
         }})
             .then((response) => {
+                console.log(response.data);
                 setReviewData(response.data);
             })  
             .catch((error) => {
@@ -34,7 +36,7 @@ function ReviewList() {
             <div className="reviewDetail">
             {reviewDate.reviewDtoList.map((review) => (
             <div>
-                <ReviewDetail userId={review.otherUserId} nickName={review.nickName} content={review.content} />
+                <ReviewDetail userId={review.userId} nickName={review.nickName} content={review.content} profileImage={review.profileImage || defaultProfileImage} />
             </div>
             ))}</div>
         </div>

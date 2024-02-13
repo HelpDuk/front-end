@@ -36,10 +36,13 @@ const Category = (props) => {
       ...categoryDtoList,
       [itemName]: !categoryDtoList[itemName],
     });
+  };
 
+  useEffect(() => {
     // 부모 컴포넌트로 선택된 카테고리 정보 전달
     props.onCategoryChange(categoryDtoList);
-  };
+}, [categoryDtoList]); // categoryDtoList 변경될 때마다 전달
+
 
   return (
     <article className={`category-dropdown ${props.visibility ? 'slide-fade-in-dropdown' : 'slide-fade-out-dropdown'}`}>

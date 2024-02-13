@@ -94,8 +94,8 @@ function Mypage () {
                     </ul>
                 </div>
                 <div style={{marginTop: "50px"}}>
-                <Link to={`./reviewList`} state={{ reviewCnt: reviewCnt }} ><h2 style={{marginBottom: "15px"}}>받은 의뢰 후기</h2>
-                    <p style={{fontSize: "1.2em", paddingTop: "10px", paddingLeft: "45px"}}>받은 의뢰 후기가 {reviewCnt}개 있습니다.</p></Link>
+                <Link to={`./reviewList`} state={{ reviewCnt: reviewCnt }} ><h2 style={{marginBottom: "15px"}}>받은 의뢰 후기</h2></Link>
+                    {/* <p style={{fontSize: "1.2em", paddingTop: "10px", paddingLeft: "45px"}}>받은 의뢰 후기가 {reviewCnt}개 있습니다.</p> */}
                 </div>
             </div>
             </div>

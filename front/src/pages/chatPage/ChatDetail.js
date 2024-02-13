@@ -104,7 +104,7 @@ function ChatDetail() {
             }
         };
         ChatRoomData();
-      }, []);
+      }, );
 
 
     const [allMessage, setAllMessage] = useState([]);
@@ -130,7 +130,7 @@ function ChatDetail() {
             } 
         };
         AllMessageData();
-    });
+    }, []);
     
 
     return(
