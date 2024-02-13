@@ -98,7 +98,7 @@ function SignupPage() {
     
         if (isIdValid && isPasswordValid && isEmailValid) {
             // 회원가입 요청을 보내기
-            axios.post('http://localhost:3000/api/sign/sign-up', { params:  {
+            axios.post('http://localhost:3000/api/sign/sign-up', null, { params:  {
                 userEmail: email,
                 password: password
             } })
