@@ -44,7 +44,9 @@ function WriteReview ({roomId}) {
         e.preventDefault();
         if (review && reviewScore) {
             const postData = {
-                "roomId": "d1d31faa-062a-465a-8124-1abec2215b74",
+
+                "roomId": "e99ec4a9-4704-4cd1-95ce-0734bb9539c4",
+
                 "score": parseInt(reviewScore, 10),
                 "content": review,
             };
