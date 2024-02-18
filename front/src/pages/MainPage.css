@@ -1,0 +1,33 @@
+.mainPage {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+    height: 95vh; 
+    text-align: center; 
+}
+
+.mainImg {
+    max-width: 600px;
+    max-height: 600px;
+    margin: 10px 0; 
+}
+
+.mainPage .custom {
+    height: 50px;
+    padding: 12px 20px;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    background-color: #80BCBD;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+
+}
+
+.loginLink {
+    margin-top: 45px;
+}
+
+

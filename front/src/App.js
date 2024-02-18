@@ -16,7 +16,6 @@ import ChatPageDetail from "./pages/chatPage/ChatPageDetail";
 import DetailPage from "./pages/detailPage/DetailPage"
 import Login from "./pages/LoginPage";
 import Signup from "./pages/SignupPage"
-import Alert from "./pages/AlertPage"
 import RequestForm from "./pages/RequestFormPage"
 import { RoomIdProvider } from './components/RoomIDContext';
 import { UserProvider } from './components/UserContext';
@@ -25,6 +24,7 @@ import { useState } from "react"
 import { MockProvider } from './components/MockContext';
 import { ChatMockProvider } from './components/MockChat';
 import { ConversationMockProvider } from './components/MockConversation';
+import MainPage from "./pages/MainPage";
 
 function App() {
 
@@ -42,7 +42,7 @@ function App() {
               <Route path={"/homepage"} element={<HomePage />} />
               <Route path={"/login"} element={<Login />} />
               <Route path={"/signup"} element={<Signup />} />
-              <Route path={"/alert"} element={<Alert />} />
+              <Route path={"/"} element={<MainPage />} />
               <Route path={"/mypage"} element={<Mypage />} />
               <Route path={"/OtherPage/:otherUserId"} element={<OtherPage />} />
               <Route path={"/requestForm"} element={<RequestForm />} />
