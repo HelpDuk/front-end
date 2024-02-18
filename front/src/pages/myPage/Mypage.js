@@ -61,7 +61,7 @@ function Mypage () {
                         <h5 style={{color: "#A3A3A3", fontSize: "1em"}}>{userData.userEmail}</h5>
                     </div>
                     <div className="userSetting">
-                        <Link to={"../homePage"} onClick={handleLogout}>
+                        <Link to={"/"} onClick={handleLogout}>
                             <h4>로그아웃</h4>
                         </Link>
                         <Link to={"./ProfileEdit"}>
